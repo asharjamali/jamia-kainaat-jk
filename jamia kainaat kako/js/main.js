@@ -30,6 +30,38 @@
     });
 
 
+    
+
+
+    document.querySelectorAll('.vmo-flip-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('active');
+        });
+    });
+
+
+
+    
+    const text = " Jamia Kainat";
+    let index = 0;
+    const speed = 150; // Typing speed in milliseconds
+
+    function typeWriter() {
+        if (index < text.length) {
+            document.getElementById("typewriter").textContent = text.substring(0, index + 1);
+            index++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.onload = function() {
+        document.getElementById("typewriter").textContent = ""; // Clear initial text
+        typeWriter();
+    };
+
+
+
+
     // Testimonial carousel
 
     $(".testimonial-carousel").owlCarousel({

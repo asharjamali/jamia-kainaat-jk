@@ -1,19 +1,153 @@
-
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
     visibility: hidden;
     transition: opacity .8s ease-out, visibility 0s linear .5s;
     z-index: 99999;
- }
+}
 
- #spinner.show {
-     transition: opacity .8s ease-out, visibility 0s linear .0s;
-     visibility: visible;
-     opacity: 1;
- }
+#spinner.show {
+    transition: opacity .8s ease-out, visibility 0s linear .0s;
+    visibility: visible;
+    opacity: 1;
+}
+
 /*** Spinner End ***/
 
+
+/*** Page Header Start ***/
+.page-header {
+    position: relative;
+    background: url('../img/madrasa-header-alt.jpg') no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    padding: 3rem 0;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 128, 0, 0.5));
+    z-index: 0;
+    animation: gradientShift 15s infinite ease-in-out;
+}
+
+.page-header .madrasa-heading {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.page-header .madrasa-heading::after {
+    content: '|';
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+.circle-breadcrumb .breadcrumb-item {
+    position: relative;
+    padding-left: 25px;
+}
+
+.circle-breadcrumb .breadcrumb-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.circle-breadcrumb .breadcrumb-item a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.circle-breadcrumb .breadcrumb-item a:hover::before {
+    background: #008000;
+    transform: translateY(-50%) scale(1.3);
+}
+
+.circle-breadcrumb .breadcrumb-item a:hover {
+    color: #008000;
+}
+
+.circle-breadcrumb .breadcrumb-item.active {
+    color: #006400;
+    font-weight: 600;
+}
+
+.circle-breadcrumb .breadcrumb-item.active::before {
+    background: #006400;
+}
+
+/* Animations */
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 128, 0, 0.5));
+    }
+    50% {
+        background: linear-gradient(135deg, rgba(0, 128, 0, 0.5), rgba(0, 100, 0, 0.8));
+    }
+    100% {
+        background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 128, 0, 0.5));
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .page-header .madrasa-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-header {
+        padding: 4rem 0;
+    }
+    .page-header .madrasa-heading {
+        font-size: 4rem;
+    }
+    .circle-breadcrumb .breadcrumb-item::before {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        padding: 2rem 0;
+    }
+    .page-header .madrasa-heading {
+        font-size: 2rem;
+    }
+    .circle-breadcrumb .breadcrumb-item {
+        font-size: 0.9rem;
+        padding-left: 20px;
+    }
+    .circle-breadcrumb .breadcrumb-item::before {
+        width: 8px;
+        height: 8px;
+    }
+}
+/*** Page Header End ***/
 
 /*** Common CSS Start ***/
 .back-to-top {
@@ -69,6 +203,7 @@ h6,
 .animated {
     animation-duration: 2s !important;
 }
+
 /*** Common CSS End ***/
 
 
@@ -130,6 +265,7 @@ h6,
 .title-border-radius {
     border-radius: 10% 30%;
 }
+
 /*** Button End ***/
 
 
@@ -160,26 +296,31 @@ h6,
 .topbar .top-link a:hover i {
     color: var(--bs-primary) !important;
 }
+
 /*** Topbar End ***/
 
 
 /*** Navbar Start ***/
 .navbar {
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(0, 128, 0, 0.1);
+    /* Green border */
 }
 
 .navbar .navbar-nav .nav-link {
     padding: 10px 12px;
     font-size: 16px;
     font-weight: 600;
+    color: #333;
     transition: .5s;
+    font-family: 'Arial', sans-serif;
 }
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active,
 .fixed-top.bg-white .navbar .navbar-nav .nav-link:hover,
 .fixed-top.bg-white .navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+    color: #008000;
+    /* Islamic green */
 }
 
 .navbar .dropdown-toggle::after {
@@ -189,6 +330,7 @@ h6,
     font-weight: 700;
     vertical-align: middle;
     margin-left: 8px;
+    color: #008000;
 }
 
 @media (min-width: 1200px) {
@@ -197,389 +339,1182 @@ h6,
         visibility: hidden;
         top: 100%;
         font-weight: 400;
-        font-family: 'Fredoka', sans-serif;
+        font-family: 'Arial', sans-serif;
         transform: rotateX(-75deg);
         transform-origin: 0% 0%;
         border: 0;
         transition: .5s;
         opacity: 0;
+        background: #008000 !important;
+        /* Green background */
     }
 }
 
+.dropdown .dropdown-menu a {
+    color: #fff !important;
+    padding: 8px 15px;
+}
+
 .dropdown .dropdown-menu a:hover {
-    background: var(--bs-secondary);
-    color: var(--bs-primary);
+    background: #006400;
+    /* Darker green */
+    color: #fff !important;
 }
 
 .navbar .nav-item:hover .dropdown-menu {
     transform: rotateX(0deg);
     visibility: visible;
-    background: var(--bs-light) !important;
+    background: #008000 !important;
     border-radius: 10px !important;
     transition: .5s;
     opacity: 1;
 }
 
 #searchModal .modal-content {
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, .9);
 }
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        background: #008000 !important;
+        border-radius: 5px !important;
+    }
+}
+
 /*** Navbar End ***/
 
-
 /*** Hero Header ***/
-.hero-header,
-.page-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/hero-img.jpg);
+.hero-header {
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 0, 0, 0.3)),
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
 }
-/*** Hero Header ***/
 
+/* Custom Title Styling */
+.madrasa-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-in-out;
+}
 
-/*** About Start ***/
-.video {
+/* Button Styling */
+.madrasa-btn {
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary.madrasa-btn {
+    background: #006400;
+    /* Dark green for Islamic theme */
+    border: 2px solid #006400;
+}
+
+.btn-primary.madrasa-btn:hover {
+    background: #008000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+.btn-outline-light.madrasa-btn {
+    border: 2px solid #fff;
+}
+
+.btn-outline-light.madrasa-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Hero Pattern and Icon */
+.hero-pattern {
     position: relative;
     height: 100%;
-    min-height: 400px;
-    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(../img/about.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
+    animation: pulse 2s infinite;
 }
 
-.video .btn-play {
+.floating-icon {
+    width: 200px;
     position: absolute;
-    z-index: 3;
+    right: 20px;
     top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    box-sizing: content-box;
-    display: block;
-    width: 32px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    padding: 18px 20px 18px 28px;
+    transform: translateY(-50%);
+    animation: float 3s ease-in-out infinite;
 }
 
-.video .btn-play:before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 100px;
-    height: 100px;
-    background: var(--bs-secondary);
-    border-radius: 50%;
-    animation: pulse-border 1500ms ease-out infinite;
-}
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-.video .btn-play:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 100px;
-    height: 100px;
-    background: var(--bs-primary);
-    border-radius: 50%;
-    transition: all 200ms;
-}
-
-.video .btn-play img {
-    position: relative;
-    z-index: 3;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-}
-
-.video .btn-play span {
-    display: block;
-    position: relative;
-    z-index: 3;
-    width: 0;
-    height: 0;
-    border-left: 32px solid var(--bs-white);
-    border-top: 22px solid transparent;
-    border-bottom: 22px solid transparent;
-}
-
-@keyframes pulse-border {
-    0% {
-        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    to {
         opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(-50%);
+    }
+
+    50% {
+        transform: translateY(-60%);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
     }
 
     100% {
-        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
-        opacity: 0;
+        transform: scale(1);
     }
 }
 
-#videoModal {
-    z-index: 99999;
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .hero-header {
+        min-height: 500px;
+    }
+
+    .madrasa-title {
+        font-size: 2.5rem;
+    }
+
+    .madrasa-btn {
+        padding: 10px 25px;
+    }
 }
 
-#videoModal .modal-dialog {
-    position: relative;
-    max-width: 800px;
-    margin: 60px auto 0 auto;
-}
-
-#videoModal .modal-body {
-    position: relative;
-    padding: 0px;
-}
-
-#videoModal .close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: 0px;
-    top: -30px;
-    z-index: 999;
-    font-size: 30px;
-    font-weight: normal;
-    color: #FFFFFF;
-    background: #000000;
-    opacity: 1;
-}
-
-.video.border {
-    border-radius: 50% 20% / 10% 40%;
-}
-
+/*** About Start ***/
 .about {
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../img/background.jpg);
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Video Section */
+.madrasa-video {
+    position: relative;
+    min-height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.madrasa-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures video fills container without distortion */
+    border-radius: 15px;
+}
+
+/* Heading and Text */
+.madrasa-heading {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.title-border-radius {
+    border-radius: 10px;
+    background: rgba(0, 100, 0, 0.1);
+}
+
+/* Button */
+.madrasa-btn {
+    border-radius: 25px;
+    background: #006400;
+    border: 2px solid #006400;
+    font-weight: 600;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.madrasa-btn:hover {
+    background: #008000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .madrasa-video {
+        min-height: 250px;
+    }
+
+    .madrasa-heading {
+        font-size: 2rem;
+    }
+
+    .madrasa-btn {
+        padding: 12px 30px;
+    }
+}
+
+@media (min-width: 768px) {
+    .about {
+        padding: 3rem 0;
+    }
+
+    .madrasa-video {
+        min-height: 300px;
+    }
+
+    .madrasa-heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .about {
+        padding: 5rem 0;
+    }
+
+    .madrasa-heading {
+        font-size: 3rem;
+    }
+
+    .madrasa-btn {
+        padding: 15px 40px;
+    }
+}
+
+/*** About End ***/
+
+/*** Vision Mission Objectives Start ***/
+.vmo {
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+}
+
+.vmo .madrasa-heading {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #006400;
+}
+
+.vmo .vmo-flip-card {
+    perspective: 1000px;
+    height: 300px;
+    /* Fixed height for consistency */
+}
+
+.vmo .vmo-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.vmo .vmo-flip-card:hover .vmo-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.vmo .vmo-flip-front,
+.vmo .vmo-flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #fff;
+    border: 2px solid #006400;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.vmo .vmo-flip-front {
+    z-index: 2;
+}
+
+.vmo .vmo-flip-back {
+    transform: rotateY(180deg);
+    background: #006400;
+    color: #fff;
+}
+
+.vmo .vmo-icon {
+    background: rgba(0, 100, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: background 0.3s ease;
+}
+
+.vmo .vmo-flip-front:hover .vmo-icon {
+    background: #006400;
+    color: #fff;
+}
+
+.vmo h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.vmo .vmo-flip-back h4 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.vmo p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.vmo .madrasa-btn {
+    border-radius: 25px;
+    background: #006400;
+    border: 2px solid #006400;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.vmo .madrasa-btn:hover {
+    background: #008000;
+    border-color: #008000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .vmo .madrasa-heading {
+        font-size: 2.5rem;
+    }
+
+    .vmo .vmo-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+    }
+}
+
+@media (min-width: 768px) {
+    .vmo {
+        padding: 4rem 0;
+    }
+
+    .vmo .madrasa-heading {
+        font-size: 3rem;
+    }
+
+    .vmo h3 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Mobile Click Interaction */
+@media (max-width: 767px) {
+    .vmo .vmo-flip-card:hover .vmo-flip-inner {
+        transform: rotateY(0deg);
+        /* Disable hover on mobile */
+    }
+
+    .vmo .vmo-flip-card.active .vmo-flip-inner {
+        transform: rotateY(180deg);
+        /* Flip on click */
+    }
+
+    .vmo .vmo-flip-card {
+        height: auto;
+        /* Allow dynamic height on mobile */
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .vmo {
+        padding: 2rem 0;
+    }
+
+    .vmo .madrasa-heading {
+        font-size: 1.75rem;
+    }
+
+    .vmo h3 {
+        font-size: 1.25rem;
+    }
+
+    .vmo p {
+        font-size: 0.9rem;
+    }
+
+    .vmo .madrasa-btn {
+        padding: 8px 20px;
+    }
+}
+
+/*** Vision Mission Objectives End ***/
+
+
+/*** Service Start ***/
+.service {
+    background: linear-gradient(rgba(0, 100, 0, 0.05), rgba(0, 100, 0, 0.1)),
+        url(../img/madrasa-service-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-/*** About End ***/
 
-
-/*** service Start ***/
-.service {
-    background: linear-gradient(rgba(255, 72, 128, 0.05), rgba(255, 72, 128, 0.2));
-}
-
-.service .service-item {
-    box-shadow: 0 0 45px rgba(0, 0, 0, .1);
-    width: 100%;
-    height: 100%;
-    border-radius: 50% 20% / 10% 40%;
-    transition: 0.5s;
+/* Service Item */
+.madrasa-service-item {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s ease;
     position: relative;
-}
-
-.service-content::after {
-    position: absolute;
-    content: "";
-    width: 0;
+    text-align: center;
     height: 100%;
-    top: 0;
-    left: 0;
-    right: auto;
-    background: transparent;
-    border-radius: 50% 20% / 10% 40%;
-    transition: .5s;
 }
 
-.service-item:hover {
-    border: 1px solid var(--bs-secondary) !important;
+.madrasa-service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 100, 0, 0.2);
 }
 
-.service-item:hover .service-content::after {
-    background: var(--bs-secondary);
-    width: 100%;
-    opacity: 1;
-    z-index: 1;
+/* Service Icon */
+.service-icon {
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.1), rgba(255, 255, 255, 0.9));
+    border-bottom: 2px solid #006400;
+    transition: all 0.4s ease;
 }
 
-.service-item .service-content .service-content-inner {
-    position: relative;
-    z-index: 2;
+.madrasa-service-item:hover .service-icon {
+    background: #006400;
 }
 
-.service-item .service-content-inner i,
-.service-item .service-content-inner p,
-.service-item .service-content-inner a.h4 {
-    transition: 0.5s;
+.madrasa-service-item:hover .service-icon i {
+    color: #fff !important;
+    transform: scale(1.1);
 }
 
-.service-item:hover .service-content-inner i,
-.service-item:hover .service-content-inner p {
-    color: var(--bs-white) !important;
-}
-.service-item:hover .service-content-inner a.h4 {
-    color: var(--bs-primary);
+/* Service Content */
+.service-content {
+    padding: 20px;
 }
 
-.service-item:hover .service-content-inner a.btn-primary {
-    background: var(--bs-white) !important;
-    color: var(--bs-primary) !important;
+.service-content h4 {
+    font-weight: 600;
+    transition: all 0.4s ease;
 }
 
-.service-item .service-content-inner a.btn-primary:hover {
-    background: var(--bs-primary) !important;
-    color: var(--bs-white) !important;
+.madrasa-service-item:hover .service-content h4 {
+    color: #006400;
 }
+
+.service-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Button */
+.madrasa-btn {
+    background: #006400;
+    border: 2px solid #006400;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.madrasa-btn:hover {
+    background: #fff;
+    color: #006400 !important;
+    border-color: #006400;
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+}
+
+/* Title Styling */
+.title-border-radius {
+    background: rgba(0, 100, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+    .madrasa-service-item {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .service .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .madrasa-service-item {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .service .display-4 {
+        font-size: 2rem;
+    }
+
+    .service-icon i {
+        font-size: 3.5rem;
+    }
+
+    .service-content h4 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .service .display-4 {
+        font-size: 1.75rem;
+    }
+
+    .service-icon i {
+        font-size: 3rem;
+    }
+
+    .madrasa-btn {
+        padding: 8px 20px;
+    }
+}
+
 /*** Service End ***/
-
 
 /*** Programs Start ***/
 .program {
-    background: linear-gradient(rgba(255, 72, 128, 0.1), rgba(255, 72, 128, 0.1));
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.program .program-item .program-img .program-rate {
+/* Program Card */
+.madrasa-program-card {
+    perspective: 1000px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.madrasa-program-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 100, 0, 0.2);
+}
+
+.madrasa-program-card .card-front,
+.madrasa-program-card .card-back {
     position: absolute;
-    width: 100px; 
-    top: -20px; 
-    left: 50%; 
-    margin-left: -50px; 
-    border-radius: 10% / 50%;
-}
-
-.program .program-item .program-text {
-    padding-top: 150px; 
-    margin-top: -125px;
-}
-
-.program .program-item .program-img img,
-.program .program-item .program-teacher img,
-.program .program-item:hover .program-text-inner a.h4 {
-    transition: 0.5s;
-}
-
-.program .program-item:hover .program-img img,
-.program .program-item:hover .program-teacher img {
-    transform: scale(1.2);
-}
-
-.program .program-item:hover .program-text-inner a.h4 {
-    color: var(--bs-primary) !important;
-}
-/*** Programs End ***/
-
-
-/*** Events Start ***/
-.events .events-item {
     width: 100%;
     height: 100%;
-    border-radius: 30%;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+}
+
+.madrasa-program-card .card-front {
+    transform: rotateY(0deg);
+    z-index: 2;
+}
+
+.madrasa-program-card .card-back {
+    transform: rotateY(180deg);
+    background: #006400;
+}
+
+.madrasa-program-card:hover .card-front {
+    transform: rotateY(-180deg);
+}
+
+.madrasa-program-card:hover .card-back {
+    transform: rotateY(0deg);
+}
+
+/* Card Front */
+.card-front {
     position: relative;
 }
 
-.events .events-item .events-inner .events-rate {
-    position: absolute;
-    width: 120px; 
-    top: -20px; 
-    left: 50%; 
-    margin-left: -60px; 
-    border-radius: 10% / 50%;
-}
-
-.events .events-item .events-inner .events-img .event-overlay {
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.5s;
-    z-index: 1;
-    opacity: 0;
-}
-
-.events .events-item .events-inner .events-img:hover .event-overlay {
-    opacity: 1;
-}
-
-.events .events-item .events-img::after {
-    position: absolute;
-    content: "";
+.card-front img {
     width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
-    bottom: auto;
-    background: rgba(77, 101, 249, .7);
-    border-radius: 10px;
-    transition: 0.5s;
-}
-
-.events .events-item:hover .events-img::after {
     height: 100%;
-    opacity: 1;
+    object-fit: cover;
 }
 
-.events .events-item .events-text a.h4,
-.events .events-item .events-img img {
-    transition: 0.5s;
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
 }
 
-.events .events-item:hover .events-text a.h4 {
-    color: var(--bs-primary) !important;
+.card-overlay h4 {
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-.events .events-item:hover .events-img img {
-    transform: scale(1.3);
+.card-overlay .badge {
+    background: #008000;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
 }
+
+/* Card Back */
+.card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h4 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.card-content ul {
+    margin-bottom: 15px;
+}
+
+.card-content ul li {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Button */
+.madrasa-btn {
+    background: #006400;
+    border: 2px solid #006400;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.madrasa-btn:hover {
+    background: #fff;
+    color: #006400 !important;
+    border-color: #fff;
+}
+
+.card-back .madrasa-btn {
+    background: #fff;
+    color: #006400;
+}
+
+.card-back .madrasa-btn:hover {
+    background: #008000;
+    color: #fff !important;
+    border-color: #008000;
+}
+
+/* Title Styling */
+.title-border-radius {
+    background: rgba(0, 100, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .program .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .madrasa-program-card {
+        height: 300px;
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .program .display-4 {
+        font-size: 2rem;
+    }
+
+    .madrasa-program-card {
+        height: 280px;
+    }
+
+    .card-content p {
+        font-size: 0.9rem;
+    }
+
+    .card-content ul li {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .program .display-4 {
+        font-size: 1.75rem;
+    }
+
+    .madrasa-program-card {
+        height: 250px;
+    }
+
+    .card-overlay h4 {
+        font-size: 1.25rem;
+    }
+
+    .card-content h4 {
+        font-size: 1.25rem;
+    }
+
+    .card-content p {
+        font-size: 0.85rem;
+    }
+
+    .madrasa-btn {
+        padding: 8px 20px;
+    }
+}
+
+/*** Programs End ***/
+
+/*** Events Start ***/
+.events {
+    background: linear-gradient(rgba(0, 100, 0, 0.05), rgba(0, 100, 0, 0.1)),
+        url(../img/madrasa-flip-bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Flip Card */
+.madrasa-flip-card {
+    perspective: 1000px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.madrasa-flip-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 100, 0, 0.2);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.madrasa-flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Flip Card Front */
+.flip-card-front {
+    background: #fff;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.madrasa-flip-card:hover .flip-card-front img {
+    transform: scale(1.05);
+}
+
+.front-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.front-overlay h4 {
+    margin: 0;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.events-date {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #006400;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.events-date .day {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.events-date .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* Flip Card Back */
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: #006400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.back-content {
+    padding: 20px;
+}
+
+.back-content h4 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.back-content p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.events-details small {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* Button */
+.madrasa-btn {
+    background: #006400;
+    border: 2px solid #006400;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.madrasa-btn:hover {
+    background: #fff;
+    color: #006400 !important;
+    border-color: #006400;
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+}
+
+.flip-card-back .madrasa-btn {
+    background: #fff;
+    color: #006400;
+}
+
+.flip-card-back .madrasa-btn:hover {
+    background: #008000;
+    color: #fff !important;
+    border-color: #008000;
+}
+
+/* Title Styling */
+.title-border-radius {
+    background: rgba(0, 100, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .events .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .madrasa-flip-card {
+        height: 350px;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .events .display-4 {
+        font-size: 2rem;
+    }
+
+    .madrasa-flip-card {
+        height: 320px;
+    }
+
+    .back-content p {
+        font-size: 0.9rem;
+    }
+
+    .events-date {
+        width: 50px;
+        height: 50px;
+    }
+
+    .events-date .day {
+        font-size: 1.25rem;
+    }
+
+    .events-date .month {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .events .display-4 {
+        font-size: 1.75rem;
+    }
+
+    .madrasa-flip-card {
+        height: 280px;
+    }
+
+    .front-overlay h4 {
+        font-size: 1.25rem;
+    }
+
+    .back-content h4 {
+        font-size: 1.25rem;
+    }
+
+    .back-content p {
+        font-size: 0.85rem;
+    }
+
+    .events-details {
+        font-size: 0.85rem;
+    }
+
+    .madrasa-btn {
+        padding: 8px 20px;
+    }
+}
+
 /*** Events End ***/
 
-
 /*** Blog Start ***/
-.blog .blog-item .blog-img::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 0;
-    top: 0;
-    left: 0;
-    bottom: auto;
-    background: rgba(77, 101, 249, .7);
-    border-radius: 10px 10px 0 0;
-    transition: 0.5s;
+.blog {
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
 }
 
-.blog .blog-item:hover .blog-img::after {
-    height: 100%;
-    opacity: 1;
+.blog .madrasa-heading {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #006400;
 }
 
-.blog .blog-item .blog-date-comments {
-    padding-top: 150px !important; 
-    margin-top: -125px;
+.blog .blog-item {
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: 2px solid #006400;
 }
 
-.blog .blog-item .blog-img img,
-.blog .blog-item .blog-content img,
-.blog .blog-item .blog-text-inner a.h4 {
-    transition: 0.5s;
+.blog .blog-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 100, 0, 0.3);
+}
+
+.blog .blog-img {
+    position: relative;
+}
+
+.blog .blog-img img {
+    transition: transform 0.5s ease;
 }
 
 .blog .blog-item:hover .blog-img img {
-    transform: scale(1.3);
+    transform: scale(1.15);
 }
 
-.blog .blog-item:hover .blog-content img {
-    transform: scale(1.3);
+.blog .blog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 100, 0, 0.1), rgba(0, 100, 0, 0.6));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 10px 10px 0 0;
+}
+
+.blog .blog-item:hover .blog-overlay {
+    opacity: 1;
+}
+
+.blog .blog-date-comments {
+    background: #006400;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.blog .blog-content {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.blog .author-img {
+    transition: transform 0.3s ease;
+}
+
+.blog .blog-item:hover .author-img {
+    transform: scale(1.1);
+}
+
+.blog .blog-text-inner a.h4 {
+    color: #333;
+    transition: color 0.3s ease;
+    display: block;
+    margin-top: 10px;
 }
 
 .blog .blog-item:hover .blog-text-inner a.h4 {
-    color: var(--bs-primary);
+    color: #006400;
 }
-/*** Blog End ***/
 
+.blog .blog-text-inner p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.blog .madrasa-btn {
+    border-radius: 25px;
+    background: #006400;
+    border: 2px solid #006400;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.blog .madrasa-btn:hover {
+    background: #008000;
+    border-color: #008000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .blog .madrasa-heading {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .blog {
+        padding: 4rem 0;
+    }
+
+    .blog .madrasa-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .blog .blog-item {
+        margin-bottom: 2rem;
+    }
+
+    .blog .madrasa-heading {
+        font-size: 1.75rem;
+    }
+
+    .blog .blog-date-comments {
+        font-size: 0.85rem;
+    }
+
+    .blog .author-img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/*** Blog End ***/
 
 
 /*** Team Start ***/
@@ -623,13 +1558,14 @@ h6,
 .team .team-item:hover .team-content p {
     color: var(--bs-dark) !important;
 }
+
 /*** Team end ***/
 
 
 /*** testimonial Start ***/
 .testimonial .testimonial-carousel {
     position: relative;
-    
+
 }
 
 .testimonial .testimonial-carousel .owl-dots {
@@ -654,7 +1590,143 @@ h6,
     width: 30px;
     background: var(--bs-secondary);
 }
+
 /*** testimonial End ***/
+
+/*** Enquiry Start ***/
+.enquiry {
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)), 
+                url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+}
+
+.enquiry .madrasa-heading {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #006400;
+}
+
+.enquiry .enquiry-form {
+    border: 2px solid #006400;
+    transition: box-shadow 0.3s ease;
+}
+
+.enquiry .enquiry-form:hover {
+    box-shadow: 0 10px 20px rgba(0, 100, 0, 0.3);
+}
+
+.enquiry .enquiry-form h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.enquiry .form-control {
+    border-radius: 10px;
+    border: 1px solid #006400;
+    padding: 10px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.enquiry .form-control:focus {
+    border-color: #008000;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+    outline: none;
+}
+
+.enquiry .form-label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.enquiry .enquiry-map {
+    border: 2px solid #006400;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.enquiry .enquiry-map:hover {
+    box-shadow: 0 10px 20px rgba(0, 100, 0, 0.3);
+}
+
+.enquiry .enquiry-map iframe {
+    border: none;
+    min-height: 300px; /* Default for mobile */
+}
+
+.enquiry .madrasa-btn {
+    border-radius: 25px;
+    background: #006400;
+    border: 2px solid #006400;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.enquiry .madrasa-btn:hover {
+    background: #008000;
+    border-color: #008000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .enquiry .madrasa-heading {
+        font-size: 2.5rem;
+    }
+    .enquiry .enquiry-form h3 {
+        font-size: 1.75rem;
+    }
+    .enquiry .enquiry-map iframe {
+        min-height: 350px;
+    }
+}
+
+@media (min-width: 768px) {
+    .enquiry {
+        padding: 4rem 0;
+    }
+    .enquiry .madrasa-heading {
+        font-size: 3rem;
+    }
+    .enquiry .enquiry-map iframe {
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 767px) {
+    .enquiry .enquiry-form {
+        margin-bottom: 2rem;
+    }
+    .enquiry .enquiry-map iframe {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .enquiry {
+        padding: 2rem 0;
+    }
+    .enquiry .madrasa-heading {
+        font-size: 1.75rem;
+    }
+    .enquiry .enquiry-form h3 {
+        font-size: 1.25rem;
+    }
+    .enquiry .form-control {
+        font-size: 0.9rem;
+    }
+    .enquiry .madrasa-btn {
+        padding: 8px 20px;
+    }
+}
+/*** Enquiry End ***/
 
 
 /*** Footer Start ***/
@@ -667,7 +1739,7 @@ h6,
 
 .footer .footer-galary-img img {
     width: 100%;
-    border-style: dotted; 
+    border-style: dotted;
     border-color: var(--bs-primary);
     transition: 0.5s;
 }
@@ -679,4 +1751,5 @@ h6,
 .footer-item a.text-body:hover {
     color: var(--bs-secondary) !important;
 }
+
 /*** Footer End ***/
