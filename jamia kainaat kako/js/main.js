@@ -60,91 +60,107 @@
     };
 
 
+//hero on
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slide');
+    const orbs = document.querySelectorAll('.orb');
+    const mobileOrbs = document.querySelectorAll('.mobile-orb');
+    const mobileToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    let currentSlide = 0;
+    let autoSlideInterval;
 
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        orbs.forEach(orb => orb.classList.remove('active'));
+        mobileOrbs.forEach(orb => orb.classList.remove('active'));
+        slides[index].classList.add('active');
+        orbs[index].classList.add('active');
+        mobileOrbs[index].classList.add('active');
+        currentSlide = index;
 
+        // Re-trigger animations
+        const parchment = slides[index].querySelector('.parchment');
+        const subtitle = parchment.querySelector('.slide-subtitle');
+        const title = parchment.querySelector('.slide-title');
+        const quote = parchment.querySelector('.slide-quote');
+        const btnGroup = parchment.querySelector('.btn-group');
+        parchment.style.animation = 'none';
+        title.style.animation = 'none';
+        quote.style.animation = 'none';
+        btnGroup.style.animation = 'none';
+        void parchment.offsetWidth; // Trigger reflow
+        parchment.style.animation = 'slideInRight 1s ease forwards';
+        title.style.animation = 'fadeIn 1.2s ease forwards 0.2s';
+        quote.style.animation = 'floatQuote 3s ease infinite';
+        btnGroup.style.animation = 'fadeIn 1.6s ease forwards 0.4s';
+    }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const prevArrow = document.querySelector('.slider-arrow.prev');
-        const nextArrow = document.querySelector('.slider-arrow.next');
-        const sliderWrapper = document.querySelector('.slider-wrapper');
-        let currentSlide = 0;
-        let autoSlideInterval;
-    
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            currentSlide = index;
-    
-            // Re-trigger animations
-            const content = slides[index].querySelector('.slide-content');
-            const subtitle = content.querySelector('.slide-subtitle');
-            const title = content.querySelector('.slide-title');
-            const quote = content.querySelector('.slide-quote');
-            const buttons = content.querySelectorAll('.btn');
-    
-            subtitle.style.animation = 'none';
-            title.style.animation = 'none';
-            quote.style.animation = 'none';
-            void content.offsetWidth; // Trigger reflow
-            subtitle.style.animation = 'fadeInDown 1s ease forwards';
-            title.style.animation = 'zoomIn 1.2s ease forwards';
-            quote.style.animation = 'fadeInUp 1.4s ease forwards';
-        }
-    
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-    
-        function prevSlide() {
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Desktop/Tablet navigation
+    orbs.forEach((orb, index) => {
+        orb.addEventListener('click', () => {
+            showSlide(index);
+            resetAutoSlide();
+        });
+    });
+
+    // Mobile navigation
+    mobileOrbs.forEach((orb, index) => {
+        orb.addEventListener('click', () => {
+            showSlide(index);
+            resetAutoSlide();
+            mobileNav.classList.remove('active');
+        });
+    });
+
+    // Mobile toggle
+    mobileToggle.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+    });
+
+    // Auto-slide
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 6000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    // Pause on hover (desktop/tablet)
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+
+    // Touch swipe support (mobile)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    sliderWrapper.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    sliderWrapper.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextSlide();
+        if (touchEndX - touchStartX > 50) {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
         }
-    
-        // Dot navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                resetAutoSlide();
-            });
-        });
-    
-        // Arrow navigation
-        nextArrow.addEventListener('click', () => {
-            nextSlide();
-            resetAutoSlide();
-        });
-    
-        prevArrow.addEventListener('click', () => {
-            prevSlide();
-            resetAutoSlide();
-        });
-    
-        // Auto-slide
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 6000);
-        }
-    
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-    
-        // Pause on hover
-        sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-        sliderWrapper.addEventListener('mouseleave', startAutoSlide);
-    
-        // Initial setup
-        showSlide(currentSlide);
-        startAutoSlide();
+        resetAutoSlide();
     });
 
-
-
+    // Initial setup
+    showSlide(currentSlide);
+    startAutoSlide();
+});
+ //hero end
 
 
     // Testimonial carousel

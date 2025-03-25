@@ -400,12 +400,16 @@ h6,
 
 
 
+/* Import Awesome Fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cinzel:wght@700&family=Poppins:wght@400;600&display=swap');
+
 /*** Hero Slider ***/
 .hero-slider {
     position: relative;
-    min-height: 700px;
+    min-height: 100vh;
     overflow: hidden;
-    background: #1a2a1a; /* Dark green base */
+    background: #071507;
+    /* Deep green for a rich base */
 }
 
 .slider-wrapper {
@@ -421,33 +425,31 @@ h6,
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s ease;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transform: scale(1.02);
+    transition: opacity 1.5s ease-in-out;
 }
 
 .slide.active {
     opacity: 1;
     z-index: 1;
-    transform: scale(1);
 }
 
-.slide:hover {
-    transform: scale(1.05); /* Subtle zoom on hover */
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: scalePulse 20s ease infinite;
 }
 
-.slide-1 {
-    background: url('../img/bg.jpg');
-}
-
-.slide-2 {
-    background-image: linear-gradient(rgba(0, 50, 0, 0.6), rgba(0, 0, 0, 0.5)), url('./img/madrasa-learning.jpg');
-}
-
-.slide-3 {
-    background-image: linear-gradient(rgba(0, 50, 0, 0.6), rgba(0, 0, 0, 0.5)), url('./img/madrasa-prayer.jpg');
+.pattern-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 77, 0, 0.5), rgba(0, 20, 0, 0.2)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path fill="none" stroke="%2300cc00" stroke-width="2" d="M10 10 Q 50 50 90 10 T 90 90 Q 50 50 10 90 T 10 10"/></svg>') repeat;
+    z-index: 2;
+    animation: overlayFade 8s ease infinite;
 }
 
 .slide-content {
@@ -457,83 +459,88 @@ h6,
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    background: rgba(0, 100, 0, 0.85);
-    border-radius: 50%;
-    width: 450px;
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    z-index: 3;
     padding: 30px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.slide.active .slide-content {
-    animation: glow 2s infinite alternate;
 }
 
 .slide-subtitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    margin-bottom: 15px;
-    animation: fadeInDown 1s ease forwards;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b8ffb8;
+    /* Light green */
+    opacity: 0;
+    animation: slideInTop 1.2s ease forwards 0.5s;
 }
 
 .slide-title {
-    font-size: 3rem;
-    font-weight: bold;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-    margin-bottom: 20px;
-    animation: zoomIn 1.2s ease forwards;
+    font-family: 'Amiri', serif;
+    /* Elegant Arabic-inspired font */
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 0 0 25px rgba(0, 204, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    animation: glowText 1.5s ease forwards 0.7s;
 }
 
 .slide-quote {
-    font-size: 1.2rem;
+    font-family: 'Cinzel', serif;
+    /* Classic, regal font */
+    font-size: 1.7rem;
     font-style: italic;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    margin-bottom: 25px;
-    animation: fadeInUp 1.4s ease forwards;
+    color: #e6ffe6;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    opacity: 0;
+    animation: quoteRise 3s ease infinite 1s;
 }
 
 .btn-group {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 35px;
+    opacity: 0;
+    animation: fadeInBottom 1.8s ease forwards 0.9s;
 }
 
 .btn {
-    padding: 12px 30px;
-    border-radius: 25px;
+    padding: 15px 40px;
+    border-radius: 8px;
     text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    letter-spacing: 1px;
-    transition: all 0.4s ease;
     text-decoration: none;
-    color: #fff;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-primary {
-    background: #006400;
-    border: 2px solid #006400;
+    background: #00cc00;
+    color: #fff;
+    border: none;
 }
 
 .btn-primary:hover {
-    background: #008000;
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+    background: #00ff00;
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.9);
+    transform: translateY(-5px);
 }
 
 .btn-secondary {
     background: transparent;
-    border: 2px solid #fff;
+    color: #00ff00;
+    border: 2px solid #00ff00;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    background: rgba(0, 255, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    transform: translateY(-5px);
 }
 
 /* Navigation */
@@ -543,109 +550,233 @@ h6,
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    align-items: center;
-    gap: 30px;
-    z-index: 2;
+    gap: 20px;
+    z-index: 4;
 }
 
-.slider-arrow {
-    background: rgba(0, 100, 0, 0.8);
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.nav-dot.active {
+    background: #00ff00;
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.9);
+}
+
+.nav-dot:hover {
+    background: #00cc00;
+    transform: scale(1.2);
+}
+
+/* Mobile Navigation */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
     border: none;
-    color: #fff;
-    font-size: 28px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    color: #00ff00;
+    font-size: 2.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slider-arrow:hover {
-    background: #008000;
-    transform: scale(1.15);
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-}
-
-.slider-dots {
-    display: flex;
-    gap: 15px;
-}
-
-.dot {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: #006400;
-    transform: scale(1.3);
-}
-
-.dot:hover {
-    background: #008000;
-    transform: scale(1.3);
-}
-
-.dot.active::after {
-    content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #00ff00;
-    border-radius: 50%;
-    animation: progressRing 6s linear infinite;
+    top: 20px;
+    right: 20px;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 220px;
+    height: 100%;
+    background: rgba(0, 20, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    z-index: 5;
+    transition: right 0.6s ease;
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-link {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.mobile-link:hover,
+.mobile-link.active {
+    color: #00ff00;
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateX(-10px);
 }
 
 /* Animations */
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes scalePulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
-@keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes overlayFade {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
 }
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes slideInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes glow {
-    from { box-shadow: 0 0 20px rgba(0, 255, 0, 0.3); }
-    to { box-shadow: 0 0 40px rgba(0, 255, 0, 0.6); }
+@keyframes glowText {
+    0% {
+        opacity: 0;
+        text-shadow: 0 0 5px rgba(0, 204, 0, 0.5);
+    }
+
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 25px rgba(0, 204, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.5);
+    }
 }
 
-@keyframes progressRing {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes quoteRise {
+    0% {
+        opacity: 0.7;
+        transform: translateY(10px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: translateY(10px);
+    }
+}
+
+@keyframes fadeInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 991px) {
-    .hero-slider { min-height: 600px; }
-    .slide-content { width: 350px; height: 350px; }
-    .slide-title { font-size: 2.5rem; }
-    .slide-quote { font-size: 1rem; }
-    .btn { padding: 10px 25px; }
+    .slide-title {
+        font-size: 3.5rem;
+    }
+
+    .slide-quote {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 12px 35px;
+    }
 }
 
 @media (max-width: 767px) {
-    .slide-content { width: 300px; height: 300px; padding: 20px; }
-    .slide-title { font-size: 2rem; }
-    .slide-quote { font-size: 0.9rem; }
-    .btn-group { flex-direction: column; gap: 15px; }
-    .slider-nav { bottom: 20px; }
+    .hero-slider {
+        min-height: 80vh;
+    }
+
+    .slide-content {
+        padding: 20px;
+    }
+
+    .slide-title {
+        font-size: 2.8rem;
+    }
+
+    .slide-quote {
+        font-size: 1.2rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
 }
-/*** Hero Slider End ***/
+
+.mobile-nav {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 220px;
+    height: 100%;
+    background: rgba(0, 20, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    z-index: 5;
+    transition: right 0.6s ease;
+}
+
+.mobile-nav.active {
+    display: flex;
+    /* Show when active */
+    right: 0;
+}
+
+/*** hero end ***/
 
 
 /*** About Start ***/
@@ -1126,7 +1257,7 @@ h6,
 /*** Vision Mission Objectives Start ***/
 .vmo {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1401,7 +1532,7 @@ h6,
 /*** Service Start ***/
 .service {
     background: linear-gradient(rgba(0, 100, 0, 0.05), rgba(0, 100, 0, 0.1)),
-        url(../img/madrasa-service-bg.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1534,7 +1665,7 @@ h6,
 /*** Programs Start ***/
 .program {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern-bg.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1741,7 +1872,7 @@ h6,
 /*** Events Start ***/
 .events {
     background: linear-gradient(rgba(0, 100, 0, 0.05), rgba(0, 100, 0, 0.1)),
-        url(../img/madrasa-flip-bg.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1980,7 +2111,7 @@ h6,
 /*** Blog Start ***/
 .blog {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2128,7 +2259,7 @@ h6,
 /*** Director's Message Start ***/
 .director-message {
     background: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)),
-        url(../img/director-bg.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2294,7 +2425,7 @@ h6,
 /*** Team Start ***/
 .team {
     background: linear-gradient(to bottom, rgba(0, 100, 0, 0.7), rgba(0, 0, 0, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/background.jpg);
     background-position: center;
     background-size: cover;
     padding: 2rem 0;
@@ -2588,7 +2719,7 @@ h6,
 /*** Testimonial Start ***/
 .testimonial {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2755,7 +2886,7 @@ h6,
 /*** Enquiry Start ***/
 .enquiry {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/slider1.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2902,7 +3033,7 @@ h6,
 /*** Footer Start ***/
 .footer {
     background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+        url(../img/background.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
