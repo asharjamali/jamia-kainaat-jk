@@ -155,51 +155,135 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5 about">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-12 col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="video madrasa-video">
-                        <video controls poster="./img/background.jpg">
-                            <source src="../video/madrasa-intro.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <!-- Video Section with Interactive Overlay -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="madrasa-video-wrapper">
+                    <video class="madrasa-video" poster="./img/background.jpg" muted>
+                        <source src="/video/madrasa-intro.mp4" type="video/mp4">
+                        Your browser does not support the video tag. Please download the video <a href="../video/madrasa-intro.mp4">here</a>.
+                    </video>
+                    <div class="video-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
                     </div>
                 </div>
-                <div class="col-12 col-lg-7 wow fadeIn" data-wow-delay="0.3s">
-                    <h4
-                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+            </div>
+            <!-- Text Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="about-content">
+                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius animate__animated animate__bounceIn">
                         About Us
                     </h4>
-                    <h1 class="text-dark mb-4 display-5 fw-bold madrasa-heading">
-                        Building a Bright Future Through Islamic Education
+                    <h1 class="text-dark mb-4 display-4 fw-bold madrasa-heading animate__animated animate__slideInRight">
+                        Shaping Futures Through Islamic Excellence
                     </h1>
-                    <p class="text-dark mb-4">
-                        At our Madrasa, we blend traditional Islamic teachings with modern education to foster your
-                        child's
-                        spiritual and intellectual growth. Our dedicated faculty and serene environment provide a
-                        holistic
-                        learning experience rooted in faith and knowledge.
+                    <p class="text-dark mb-4 about-intro animate__animated animate__fadeInUp">
+                        Welcome to our Madrasa, a sanctuary of learning where Islamic heritage meets modern education. We are dedicated to nurturing young minds with a balanced curriculum that fosters spiritual growth, intellectual curiosity, and moral integrity. Our mission is to empower students to become compassionate leaders and ambassadors of peace in an ever-evolving world.
                     </p>
-                    <div class="row mb-4 g-3 text-center text-md-start">
-                        <div class="col-6 col-sm-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Islamic Studies</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Quranic Learning</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Sports Activities</h6>
-                        </div>
-                        <div class="col-6 col-sm-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Qualified Maulanas
-                            </h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Safe Environment</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Modern Facilities</h6>
+                    <!-- Expanded Content -->
+                    <div class="about-details">
+                        <div class="row g-4 text-center text-md-start">
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.4s">
+                                <i class="fas fa-mosque fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Islamic Studies</h6>
+                                <p class="text-muted">In-depth learning of Islamic theology, history, and practices.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.5s">
+                                <i class="fas fa-book-open fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Quranic Learning</h6>
+                                <p class="text-muted">Mastery of Tajweed, Tafsir, and memorization with expert guidance.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.6s">
+                                <i class="fas fa-running fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Sports & Activities</h6>
+                                <p class="text-muted">Physical development through sports and extracurricular programs.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.7s">
+                                <i class="fas fa-user-graduate fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Qualified Maulanas</h6>
+                                <p class="text-muted">Experienced scholars dedicated to holistic education.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.8s">
+                                <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Safe Environment</h6>
+                                <p class="text-muted">A secure and nurturing space for all students.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.9s">
+                                <i class="fas fa-school fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Modern Facilities</h6>
+                                <p class="text-muted">State-of-the-art classrooms and resources for learning.</p>
+                            </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary px-5 py-3 btn-border-radius madrasa-btn">Explore More</a>
+                    <a href="#" class="btn btn-primary px-5 py-3 madrasa-btn mt-4 animate__animated animate__pulse">Explore More</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+</div>
+<!-- About End -->
+
+
+<!-- Our Institution Start -->
+<div class="container-fluid institution py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <!-- Image Carousel Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="institution-carousel">
+                    <div class="carousel-images">
+                        <img src="./img/learning-hall.jpg" alt="Learning Hall" class="carousel-img active">
+                        <img src="./img/community-prayer.jpg" alt="Community Prayer" class="carousel-img">
+                        <img src="./img/outdoor-activities.jpg" alt="Outdoor Activities" class="carousel-img">
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Text Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="institution-content">
+                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius animate__animated animate__bounceIn">
+                        Our Institution
+                    </h4>
+                    <h1 class="text-dark mb-4 display-4 fw-bold institution-heading animate__animated animate__slideInRight">
+                        Inspiring Faith, Igniting Minds
+                    </h1>
+                    <p class="text-dark mb-4 institution-intro animate__animated animate__fadeInUp">
+                        Welcome to our esteemed institution, where timeless Islamic principles meet innovative learning. We are committed to shaping individuals who excel in both spiritual devotion and intellectual pursuit, fostering a community grounded in faith, curiosity, and service to humanity.
+                    </p>
+                    <!-- Interactive Features -->
+                    <div class="institution-features">
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.4s">
+                            <div class="feature-icon"><i class="fas fa-shield-alt fa-2x text-primary mb-3""></i></div>
+                            <h6 class="fw-semibold">Spiritual Enrichment</h6>
+                            <p class="text-muted">Guided prayer and Islamic teachings for soulful growth.</p>
+                        </div>
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.6s">
+                            <div class="feature-icon"><i class="fas fa-lightbulb fa-2x"></i></div>
+                            <h6 class="fw-semibold">Innovative Learning</h6>
+                            <p class="text-muted">Cutting-edge education to spark creativity and insight.</p>
+                        </div>
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.8s">
+                            <div class="feature-icon"><i class="fas fa-hands-helping fa-2x"></i></div>
+                            <h6 class="fw-semibold">Community Impact</h6>
+                            <p class="text-muted">Building leaders who uplift and serve society.</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary px-5 py-3 institution-btn mt-4 animate__animated animate__pulse">Explore Our Legacy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-bg"></div>
+</div>
+<!-- Our Institution End -->
+
 
 
     <!-- Footer Start -->

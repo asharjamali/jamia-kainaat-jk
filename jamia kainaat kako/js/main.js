@@ -61,6 +61,46 @@
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
+
+        // Re-trigger animations for active slide
+        const content = slides[index].querySelector('.slide-content');
+        const animatedElements = content.querySelectorAll('.animate__animated');
+        animatedElements.forEach(el => {
+            el.classList.remove('animate__fadeInDown', 'animate__fadeInUp', 'animate__pulse');
+            void el.offsetWidth; // Trigger reflow
+            if (el.classList.contains('slide-subtitle')) el.classList.add('animate__fadeInDown');
+            if (el.classList.contains('slide-title')) el.classList.add('animate__fadeInUp');
+            if (el.classList.contains('slide-quote')) el.classList.add('animate__fadeIn');
+            if (el.classList.contains('slider-btn')) el.classList.add('animate__pulse');
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    // Auto-slide every 6 seconds
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }, 6000);
+});
+
+
+
+
+
 
     // Testimonial carousel
 
@@ -119,6 +159,146 @@
             });
         });
     });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.ripple-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600); // Match the ripple animation duration
+        });
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const images = document.querySelectorAll('.carousel-img');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach(img => img.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        images[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentIndex = index;
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showImage(index));
+    });
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }, 5000);
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const video = document.querySelector('.madrasa-video');
+    const playBtn = document.querySelector('.play-btn');
+    const overlay = document.querySelector('.video-overlay');
+
+    if (!video || !playBtn || !overlay) {
+        console.error('Video, play button, or overlay element not found.');
+        return;
+    }
+
+    playBtn.addEventListener('click', function () {
+        if (video.paused) {
+            video.play()
+                .then(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 300);
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Switch to pause icon
+                })
+                .catch(error => {
+                    console.error('Error playing video:', error);
+                });
+        } else {
+            video.pause();
+            overlay.style.display = 'flex';
+            overlay.style.opacity = '1';
+            playBtn.innerHTML = '<i class="fas fa-play"></i>'; // Switch to play icon
+        }
+    });
+
+    video.addEventListener('ended', function () {
+        overlay.style.display = 'flex';
+        overlay.style.opacity = '1';
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    });
+
+    // Ensure video starts muted and can play inline on mobile
+    video.muted = true;
+    video.setAttribute('playsinline', ''); // For iOS compatibility
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const flipCards = document.querySelectorAll('.vmo-flip-card');
+    flipCards.forEach(card => {
+        card.addEventListener('click', function () {
+            if (window.innerWidth <= 767) { // Only on mobile
+                this.classList.toggle('active');
+            }
+        });
+    });
+});
+
+
+
+const circles = document.querySelectorAll('.team-circle');
+const modal = document.getElementById('teamModal');
+const modalTitle = document.querySelector('.modal-title');
+const modalSubtitle = document.querySelector('.modal-subtitle');
+const modalDesc = document.querySelector('.modal-desc');
+const closeModal = document.querySelector('.team-modal-close');
+
+circles.forEach(circle => {
+    circle.addEventListener('click', () => {
+        modalTitle.textContent = circle.dataset.name;
+        modalSubtitle.textContent = circle.dataset.role;
+        modalDesc.textContent = circle.dataset.desc;
+        modal.style.display = 'flex';
+    });
+});
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+
+
+
 
 })(jQuery);
 

@@ -136,178 +136,281 @@
     <!-- Modal Search End -->
 
 
-    <!-- Hero Start -->
-    <div class="container-fluid py-5 hero-header wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-7 col-md-12">
-                    <h3 class="mb-3 text-primary fw-bold">Affiliated to Madrasa Education Board</h3>
-                    <h1 class="mb-5 display-4 text-white fw-bold madrasa-title">
-                        <span class="text-primary">Empowering</span> Minds, Nurturing Souls<br>
-                        The Premier Madrasa for Your Ward
+   <!-- Hero Start -->
+<div class="container-fluid hero-slider wow fadeIn" data-wow-delay="0.1s">
+    <div class="slider-wrapper">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('../img/madrasa-learning.jpg');">
+            <div class="container py-5">
+                <div class="slide-content">
+                    <h3 class="mb-3 text-primary fw-bold slide-subtitle animate__animated animate__fadeInDown">Affiliated to Madrasa Education Board</h3>
+                    <h1 class="mb-5 display-4 text-white fw-bold slide-title animate__animated animate__fadeInUp">
+                        "Knowledge is the Light of Faith"
                     </h1>
+                    <p class="text-white mb-5 slide-quote animate__animated animate__fadeIn">"Empower your child with wisdom rooted in Islamic values."</p>
                     <div class="d-flex flex-wrap gap-4">
-                        <a href="" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius madrasa-btn">
-                            Enroll Now
-                        </a>
-                        <a href="" class="btn btn-outline-light px-4 py-3 px-md-5 btn-border-radius madrasa-btn">
-                            Discover More
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                    <div class="hero-pattern">
-                        <img src="img/madrasa-icon.jpg" class="floating-icon" alt="Madrasa Symbol">
+                        <a href="#" class="btn btn-primary px-4 py-3 slider-btn animate__animated animate__pulse">Enroll Now</a>
+                        <a href="#" class="btn btn-outline-light px-4 py-3 slider-btn animate__animated animate__pulse">Discover More</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Hero End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5 about">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-12 col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="video madrasa-video">
-                        <video controls poster="./img/background.jpg">
-                            <source src="../video/madrasa-intro.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('../img/madrasa-prayer.jpg');">
+            <div class="container py-5">
+                <div class="slide-content">
+                    <h3 class="mb-3 text-primary fw-bold slide-subtitle animate__animated animate__fadeInDown">A Legacy of Excellence</h3>
+                    <h1 class="mb-5 display-4 text-white fw-bold slide-title animate__animated animate__fadeInUp">
+                        "Prayer Shapes the Soul"
+                    </h1>
+                    <p class="text-white mb-5 slide-quote animate__animated animate__fadeIn">"Nurture spirituality alongside academic growth."</p>
+                    <div class="d-flex flex-wrap gap-4">
+                        <a href="#" class="btn btn-primary px-4 py-3 slider-btn animate__animated animate__pulse">Enroll Now</a>
+                        <a href="#" class="btn btn-outline-light px-4 py-3 slider-btn animate__animated animate__pulse">Discover More</a>
                     </div>
                 </div>
-                <div class="col-12 col-lg-7 wow fadeIn" data-wow-delay="0.3s">
-                    <h4
-                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('../img/madrasa-community.jpg');">
+            <div class="container py-5">
+                <div class="slide-content">
+                    <h3 class="mb-3 text-primary fw-bold slide-subtitle animate__animated animate__fadeInDown">Building Tomorrow’s Leaders</h3>
+                    <h1 class="mb-5 display-4 text-white fw-bold slide-title animate__animated animate__fadeInUp">
+                        "Unity in Diversity"
+                    </h1>
+                    <p class="text-white mb-5 slide-quote animate__animated animate__fadeIn">"Fostering a community of compassion and strength."</p>
+                    <div class="d-flex flex-wrap gap-4">
+                        <a href="#" class="btn btn-primary px-4 py-3 slider-btn animate__animated animate__pulse">Enroll Now</a>
+                        <a href="#" class="btn btn-outline-light px-4 py-3 slider-btn animate__animated animate__pulse">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Dots -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+
+  <!-- About Start -->
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <!-- Video Section with Interactive Overlay -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="madrasa-video-wrapper">
+                    <video class="madrasa-video" poster="./img/background.jpg" muted>
+                        <source src="/video/madrasa-intro.mp4" type="video/mp4">
+                        Your browser does not support the video tag. Please download the video <a href="../video/madrasa-intro.mp4">here</a>.
+                    </video>
+                    <div class="video-overlay">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Text Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="about-content">
+                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius animate__animated animate__bounceIn">
                         About Us
                     </h4>
-                    <h1 class="text-dark mb-4 display-5 fw-bold madrasa-heading">
-                        Building a Bright Future Through Islamic Education
+                    <h1 class="text-dark mb-4 display-4 fw-bold madrasa-heading animate__animated animate__slideInRight">
+                        Shaping Futures Through Islamic Excellence
                     </h1>
-                    <p class="text-dark mb-4">
-                        At our Madrasa, we blend traditional Islamic teachings with modern education to foster your
-                        child's
-                        spiritual and intellectual growth. Our dedicated faculty and serene environment provide a
-                        holistic
-                        learning experience rooted in faith and knowledge.
+                    <p class="text-dark mb-4 about-intro animate__animated animate__fadeInUp">
+                        Welcome to our Madrasa, a sanctuary of learning where Islamic heritage meets modern education. We are dedicated to nurturing young minds with a balanced curriculum that fosters spiritual growth, intellectual curiosity, and moral integrity. Our mission is to empower students to become compassionate leaders and ambassadors of peace in an ever-evolving world.
                     </p>
-                    <div class="row mb-4 g-3 text-center text-md-start">
-                        <div class="col-6 col-sm-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Islamic Studies</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Quranic Learning</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Sports Activities</h6>
-                        </div>
-                        <div class="col-6 col-sm-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Qualified Maulanas
-                            </h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Safe Environment</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Modern Facilities</h6>
+                    <!-- Expanded Content -->
+                    <div class="about-details">
+                        <div class="row g-4 text-center text-md-start">
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.4s">
+                                <i class="fas fa-mosque fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Islamic Studies</h6>
+                                <p class="text-muted">In-depth learning of Islamic theology, history, and practices.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.5s">
+                                <i class="fas fa-book-open fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Quranic Learning</h6>
+                                <p class="text-muted">Mastery of Tajweed, Tafsir, and memorization with expert guidance.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.6s">
+                                <i class="fas fa-running fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Sports & Activities</h6>
+                                <p class="text-muted">Physical development through sports and extracurricular programs.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.7s">
+                                <i class="fas fa-user-graduate fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Qualified Maulanas</h6>
+                                <p class="text-muted">Experienced scholars dedicated to holistic education.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.8s">
+                                <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
+                                <h6 class="fw-semibold">Safe Environment</h6>
+                                <p class="text-muted">A secure and nurturing space for all students.</p>
+                            </div>
+                            <div class="col-6 col-sm-4 about-item animate__animated animate__zoomIn" data-wow-delay="0.9s">
+                                <i class="fas fa-school fa-2x text-success mb-3"></i>
+                                <h6 class="fw-semibold">Modern Facilities</h6>
+                                <p class="text-muted">State-of-the-art classrooms and resources for learning.</p>
+                            </div>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary px-5 py-3 btn-border-radius madrasa-btn">Explore More</a>
+                    <a href="#" class="btn btn-primary px-5 py-3 madrasa-btn mt-4 animate__animated animate__pulse">Explore More</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+</div>
+<!-- About End -->
 
-
-    <!-- Vision Mission Objectives Start -->
-    <div class="container-fluid vmo py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <h4
-                    class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                    Our Purpose
-                </h4>
-                <h1 class="mb-5 display-3 fw-bold madrasa-heading">Vision, Mission & Objectives</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <!-- Vision -->
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="vmo-flip-card">
-                        <div class="vmo-flip-inner">
-                            <div class="vmo-flip-front rounded text-center p-4">
-                                <div class="vmo-icon mb-3">
-                                    <i class="fas fa-eye fa-2x text-primary"></i>
-                                </div>
-                                <h3 class="text-dark fw-semibold">Our Vision</h3>
-                                <p class="text-muted">
-                                    <span style="color: rgb(6, 2, 2);">To create a generation of enlightened Muslims who
-                                        excel in faith and wisdom.</span>
-                                </p>
-                            </div>
-                            <div class="vmo-flip-back rounded text-center p-4">
-                                <h4 class="text-white fw-semibold">Vision Details</h4>
-                                <p class="text-light">
-                                    We aim to empower students with Islamic knowledge and modern skills to lead with
-                                    integrity and compassion in a global society.
-                                </p>
-                            </div>
-                        </div>
+<!-- Our Institution Start -->
+<div class="container-fluid institution py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <!-- Image Carousel Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="institution-carousel">
+                    <div class="carousel-images">
+                        <img src="./img/learning-hall.jpg" alt="Learning Hall" class="carousel-img active">
+                        <img src="./img/community-prayer.jpg" alt="Community Prayer" class="carousel-img">
+                        <img src="./img/outdoor-activities.jpg" alt="Outdoor Activities" class="carousel-img">
                     </div>
-                </div>
-                <!-- Mission -->
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="vmo-flip-card">
-                        <div class="vmo-flip-inner">
-                            <div class="vmo-flip-front rounded text-center p-4">
-                                <div class="vmo-icon mb-3">
-                                    <i class="fas fa-star fa-2x text-primary"></i>
-                                </div>
-                                <h3 class="text-dark fw-semibold">Our Mission</h3>
-                                <p class="text-muted">
-                                    To blend Quranic teachings with modern education for holistic growth.
-                                </p>
-                            </div>
-                            <div class="vmo-flip-back rounded text-center p-4">
-                                <h4 class="text-white fw-semibold">Mission Details</h4>
-                                <p class="text-light">
-                                    We provide a serene environment with dedicated Maulanas to nurture spiritual and
-                                    intellectual development.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Objectives -->
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
-                    <div class="vmo-flip-card">
-                        <div class="vmo-flip-inner">
-                            <div class="vmo-flip-front rounded text-center p-4">
-                                <div class="vmo-icon mb-3">
-                                    <i class="fas fa-bullseye fa-2x text-primary"></i>
-                                </div>
-                                <h3 class="text-dark fw-semibold">Our Objectives</h3>
-                                <p class="text-muted">
-                                    To instill values and prepare students as ambassadors of peace.
-                                </p>
-                            </div>
-                            <div class="vmo-flip-back rounded text-center p-4">
-                                <h4 class="text-white fw-semibold">Objective Details</h4>
-                                <p class="text-light">
-                                    We focus on moral education, critical thinking, and community service to shape
-                                    well-rounded individuals.
-                                </p>
-                            </div>
-                        </div>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
                     </div>
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <div class="text-center mt-5 wow fadeIn" data-wow-delay="0.8s">
-                <a href="#" class="btn btn-primary px-5 py-3 madrasa-btn">Discover More</a>
+            <!-- Text Section -->
+            <div class="col-12 col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="institution-content">
+                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius animate__animated animate__bounceIn">
+                        Our Institution
+                    </h4>
+                    <h1 class="text-dark mb-4 display-4 fw-bold institution-heading animate__animated animate__slideInRight">
+                        Inspiring Faith, Igniting Minds
+                    </h1>
+                    <p class="text-dark mb-4 institution-intro animate__animated animate__fadeInUp">
+                        Welcome to our esteemed institution, where timeless Islamic principles meet innovative learning. We are committed to shaping individuals who excel in both spiritual devotion and intellectual pursuit, fostering a community grounded in faith, curiosity, and service to humanity.
+                    </p>
+                    <!-- Interactive Features -->
+                    <div class="institution-features">
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.4s">
+                            <div class="feature-icon"><i class="fas fa-shield-alt fa-2x text-primary mb-3""></i></div>
+                            <h6 class="fw-semibold">Spiritual Enrichment</h6>
+                            <p class="text-muted">Guided prayer and Islamic teachings for soulful growth.</p>
+                        </div>
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.6s">
+                            <div class="feature-icon"><i class="fas fa-lightbulb fa-2x"></i></div>
+                            <h6 class="fw-semibold">Innovative Learning</h6>
+                            <p class="text-muted">Cutting-edge education to spark creativity and insight.</p>
+                        </div>
+                        <div class="feature-item animate__animated animate__zoomIn" data-wow-delay="0.8s">
+                            <div class="feature-icon"><i class="fas fa-hands-helping fa-2x"></i></div>
+                            <h6 class="fw-semibold">Community Impact</h6>
+                            <p class="text-muted">Building leaders who uplift and serve society.</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary px-5 py-3 institution-btn mt-4 animate__animated animate__pulse">Explore Our Legacy</a>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Vision Mission Objectives End -->
+    <div class="parallax-bg"></div>
+</div>
+<!-- Our Institution End -->
+
+
+<!-- Vision Mission Objectives Start -->
+<div class="container-fluid vmo py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                Our Purpose
+            </h4>
+            <h1 class="mb-5 display-3 fw-bold madrasa-heading">Vision, Mission & Objectives</h1>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Vision -->
+            <div class="col-12 col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+                <div class="vmo-flip-card" id="vision-card">
+                    <div class="vmo-flip-inner">
+                        <div class="vmo-flip-front rounded text-center p-4">
+                            <div class="vmo-icon mb-3">
+                                <i class="fas fa-eye fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-dark fw-semibold">Our Vision</h3>
+                            <p class="text-muted">
+                                <span style="color: rgb(6, 2, 2);">To create a generation of enlightened Muslims who excel in faith and wisdom.</span>
+                            </p>
+                        </div>
+                        <div class="vmo-flip-back rounded text-center p-4">
+                            <h4 class="text-white fw-semibold">Vision Details</h4>
+                            <p class="text-light">
+                                We aim to empower students with Islamic knowledge and modern skills to lead with integrity and compassion in a global society.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mission -->
+            <div class="col-12 col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
+                <div class="vmo-flip-card" id="mission-card">
+                    <div class="vmo-flip-inner">
+                        <div class="vmo-flip-front rounded text-center p-4">
+                            <div class="vmo-icon mb-3">
+                                <i class="fas fa-star fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-dark fw-semibold">Our Mission</h3>
+                            <p class="text-muted">
+                                To blend Quranic teachings with modern education for holistic growth.
+                            </p>
+                        </div>
+                        <div class="vmo-flip-back rounded text-center p-4">
+                            <h4 class="text-white fw-semibold">Mission Details</h4>
+                            <p class="text-light">
+                                We provide a serene environment with dedicated Maulanas to nurture spiritual and intellectual development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Objectives -->
+            <div class="col-12 col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
+                <div class="vmo-flip-card" id="objectives-card">
+                    <div class="vmo-flip-inner">
+                        <div class="vmo-flip-front rounded text-center p-4">
+                            <div class="vmo-icon mb-3">
+                                <i class="fas fa-bullseye fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-dark fw-semibold">Our Objectives</h3>
+                            <p class="text-muted">
+                                To instill values and prepare students as ambassadors of peace.
+                            </p>
+                        </div>
+                        <div class="vmo-flip-back rounded text-center p-4">
+                            <h4 class="text-white fw-semibold">Objective Details</h4>
+                            <p class="text-light">
+                                We focus on moral education, critical thinking, and community service to shape well-rounded individuals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5 wow fadeIn" data-wow-delay="0.8s">
+            <a href="#" class="btn btn-primary px-5 py-3 madrasa-btn">Discover More</a>
+        </div>
+    </div>
+</div>
+<!-- Vision Mission Objectives End -->
 
 
     <!-- Service Start -->
@@ -684,113 +787,105 @@
     </div>
     <!-- Blog End -->
 
-    <!-- Team Start -->
+
+    <!-- Director's Message Start -->
+<div class="container-fluid director-message py-5">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <!-- Image Section -->
+            <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="director-img-wrapper">
+                    <img src="img/director.jpg" alt="Director" class="img-fluid rounded-circle director-img">
+                </div>
+            </div>
+            <!-- Message Section -->
+            <div class="col-lg-7 wow fadeIn" data-wow-delay="0.3s">
+                <h4 class="text-primary mb-3 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                    From the Director
+                </h4>
+                <h1 class="display-4 fw-bold director-heading">A Vision for Excellence</h1>
+                <p class="director-text">
+                    Welcome to our institution, where we strive to blend tradition with innovation. Our goal is to nurture minds, inspire hearts, and build a future rooted in faith and knowledge. As the Director, I am committed to fostering an environment where every individual thrives, guided by integrity and compassion.
+                </p>
+                <a href="#" class="btn btn-primary px-4 py-2 ripple-btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Director's Message End -->
+
+ <!-- Team Start -->
 <div class="container-fluid team py-5">
     <div class="container py-5">
-        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+        <div class="mx-auto text-center mb-5" style="max-width: 700px;">
             <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
                 Our Educators
             </h4>
             <h1 class="mb-5 display-3 fw-bold madrasa-heading">Guardians of Knowledge</h1>
         </div>
-        <div class="row g-5 justify-content-center">
+        <div class="row g-4 justify-content-center">
             <!-- Director -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                <div class="team-book-card">
-                    <div class="team-book-inner">
-                        <div class="team-book-cover rounded text-center">
-                            <img src="img/director.jpg" class="img-fluid team-img" alt="Director">
-                            <div class="team-cover-content p-3">
-                                <h4 class="text-primary fw-semibold madrasa-title">Maulana Ahmed Khan</h4>
-                                <p class="text-muted madrasa-subtitle">Director</p>
-                            </div>
-                        </div>
-                        <div class="team-book-page rounded p-4">
-                            <h5 class="text-white fw-semibold madrasa-title">Role & Vision</h5>
-                            <p class="text-light">Oversees the madrasa’s mission to blend Islamic teachings with modern education.</p>
-                            <div class="team-social d-flex justify-content-center mt-3">
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle text-white" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="team-circle" data-role="Director" data-name="Maulana Ahmed Khan" 
+                     data-desc="Oversees the madrasa’s mission to blend Islamic teachings with modern education.">
+                    <img src="img/director.jpg" class="img-fluid" alt="Director">
+                    <div class="team-overlay">
+                        <h4 class="team-title">shakil ahmad kakvi</h4>
+                        <p class="team-subtitle">Director</p>
                     </div>
                 </div>
             </div>
-            <!-- Maulvi 1 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
-                <div class="team-book-card">
-                    <div class="team-book-inner">
-                        <div class="team-book-cover rounded text-center">
-                            <img src="img/maulvi-1.jpg" class="img-fluid team-img" alt="Maulvi 1">
-                            <div class="team-cover-content p-3">
-                                <h4 class="text-primary fw-semibold madrasa-title">Maulana Yusuf Ali</h4>
-                                <p class="text-muted madrasa-subtitle">Senior Maulvi</p>
-                            </div>
-                        </div>
-                        <div class="team-book-page rounded p-4">
-                            <h5 class="text-white fw-semibold madrasa-title">Educational Focus</h5>
-                            <p class="text-light">Teaches Quranic Tafsir and mentors students in spiritual growth.</p>
-                            <div class="team-social d-flex justify-content-center mt-3">
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle text-white" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+            <!-- Teacher 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="team-circle" data-role="Teacher" data-name="Maulana Yusuf Ali" 
+                     data-desc="Teaches Quranic Tafsir and mentors students in spiritual growth.">
+                    <img src="img/teacher-1.jpg" class="img-fluid" alt="Teacher 1">
+                    <div class="team-overlay">
+                        <h4 class="team-title">Maulana Yusuf Ali</h4>
+                        <p class="team-subtitle">Teacher</p>
                     </div>
                 </div>
             </div>
-            <!-- Maulvi 2 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.5s">
-                <div class="team-book-card">
-                    <div class="team-book-inner">
-                        <div class="team-book-cover rounded text-center">
-                            <img src="img/maulvi-2.jpg" class="img-fluid team-img" alt="Maulvi 2">
-                            <div class="team-cover-content p-3">
-                                <h4 class="text-primary fw-semibold madrasa-title">Maulana Ibrahim Siddiqui</h4>
-                                <p class="text-muted madrasa-subtitle">Maulvi</p>
-                            </div>
-                        </div>
-                        <div class="team-book-page rounded p-4">
-                            <h5 class="text-white fw-semibold madrasa-title">Educational Focus</h5>
-                            <p class="text-light">Guides students in Hadith studies and Islamic ethics.</p>
-                            <div class="team-social d-flex justify-content-center mt-3">
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle text-white" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+            <!-- Teacher 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="team-circle" data-role="Teacher" data-name="Maulana Ibrahim Siddiqui" 
+                     data-desc="Guides students in Hadith studies and Islamic ethics.">
+                    <img src="img/teacher-2.jpg" class="img-fluid" alt="Teacher 2">
+                    <div class="team-overlay">
+                        <h4 class="team-title">Maulana Ibrahim Siddiqui</h4>
+                        <p class="team-subtitle">Teacher</p>
                     </div>
                 </div>
             </div>
-            <!-- Maulvi 3 -->
-            <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.7s">
-                <div class="team-book-card">
-                    <div class="team-book-inner">
-                        <div class="team-book-cover rounded text-center">
-                            <img src="img/maulvi-3.jpg" class="img-fluid team-img" alt="Maulvi 3">
-                            <div class="team-cover-content p-3">
-                                <h4 class="text-primary fw-semibold madrasa-title">Maulana Zaid Rahman</h4>
-                                <p class="text-muted madrasa-subtitle">Maulvi</p>
-                            </div>
-                        </div>
-                        <div class="team-book-page rounded p-4">
-                            <h5 class="text-white fw-semibold madrasa-title">Educational Focus</h5>
-                            <p class="text-light">Specializes in Islamic history and youth development.</p>
-                            <div class="team-social d-flex justify-content-center mt-3">
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-2 rounded-circle text-white" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-primary btn-sm-square rounded-circle text-white" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
+            <!-- Teacher 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="team-circle" data-role="Teacher" data-name="Maulana Zaid Rahman" 
+                     data-desc="Specializes in Islamic history and youth development.">
+                    <img src="img/teacher-3.jpg" class="img-fluid" alt="Teacher 3">
+                    <div class="team-overlay">
+                        <h4 class="team-title">Maulana Zaid Rahman</h4>
+                        <p class="team-subtitle">Teacher</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="team-modal" id="teamModal">
+        <div class="team-modal-content">
+            <span class="team-modal-close">&times;</span>
+            <h4 class="modal-title"></h4>
+            <p class="modal-subtitle"></p>
+            <p class="modal-desc"></p>
+            <div class="team-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Team End -->
-
 
     <!-- Testimonial Start -->
     <div class="container-fluid testimonial py-5">

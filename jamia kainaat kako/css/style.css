@@ -398,211 +398,400 @@ h6,
 
 /*** Navbar End ***/
 
-/*** Hero Header ***/
-.hero-header {
-    background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 0, 0, 0.3)),
-        url(../img/background.jpg);
+/*** Hero Slider ***/
+.hero-slider {
+    position: relative;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 100, 0, 0.7), rgba(0, 0, 0, 0.4));
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
-    overflow: hidden;
-    min-height: 600px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
 
-/* Custom Title Styling */
-.madrasa-title {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    max-width: 700px;
+}
+
+.slide-subtitle {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.slide-title {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     line-height: 1.2;
-    animation: fadeInUp 1s ease-in-out;
+}
+
+.slide-quote {
+    font-size: 1.2rem;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* Button Styling */
-.madrasa-btn {
-    border-radius: 25px;
+.slider-btn {
+    border-radius: 30px;
     font-weight: 600;
-    transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.btn-primary.madrasa-btn {
+.btn-primary.slider-btn {
     background: #006400;
-    /* Dark green for Islamic theme */
     border: 2px solid #006400;
 }
 
-.btn-primary.madrasa-btn:hover {
+.btn-primary.slider-btn:hover {
     background: #008000;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.5);
 }
 
-.btn-outline-light.madrasa-btn {
+.btn-primary.slider-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-primary.slider-btn:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+.btn-outline-light.slider-btn {
     border: 2px solid #fff;
 }
 
-.btn-outline-light.madrasa-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+.btn-outline-light.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
     transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
 }
 
-/* Hero Pattern and Icon */
-.hero-pattern {
-    position: relative;
-    height: 100%;
-    animation: pulse 2s infinite;
-}
-
-.floating-icon {
-    width: 200px;
+/* Slider Dots */
+.slider-dots {
     position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    animation: float 3s ease-in-out infinite;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 3;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background: #006400;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: #008000;
+    transform: scale(1.2);
 }
 
 /* Animations */
-@keyframes fadeInUp {
+.animate__fadeInDown {
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.animate__fadeInUp {
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.animate__pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeInDown {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(-30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(-50%);
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    50% {
-        transform: translateY(-60%);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 991px) {
-    .hero-header {
+    .hero-slider {
         min-height: 500px;
     }
-
-    .madrasa-title {
+    .slide-title {
         font-size: 2.5rem;
     }
-
-    .madrasa-btn {
+    .slide-quote {
+        font-size: 1rem;
+    }
+    .slider-btn {
         padding: 10px 25px;
     }
 }
 
+@media (max-width: 767px) {
+    .slide-content {
+        text-align: center;
+    }
+    .slide-title {
+        font-size: 2rem;
+    }
+    .slide-quote {
+        font-size: 0.9rem;
+    }
+    .slider-dots {
+        bottom: 15px;
+    }
+}
+/*** Hero Slider End ***/
+
+
+
 /*** About Start ***/
 .about {
-    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+    background: linear-gradient(rgba(240, 248, 235, 0.95), rgba(240, 248, 235, 0.95)),
         url(../img/madrasa-pattern.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    padding: 2rem 0;
+    padding: 3rem 0;
+    overflow: hidden;
 }
 
 /* Video Section */
-.madrasa-video {
+.madrasa-video-wrapper {
     position: relative;
-    min-height: 200px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
+    transition: transform 0.3s ease;
+    max-width: 100%; /* Ensure it doesn’t overflow */
 }
 
-.madrasa-video video {
+.madrasa-video-wrapper:hover {
+    transform: scale(1.03);
+}
+
+.madrasa-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* Ensures video fills container without distortion */
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.madrasa-video-wrapper:hover .video-overlay {
+    opacity: 0.8;
+}
+
+.play-btn {
+    background: #006400;
+    border: none;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.play-btn:hover {
+    background: #008000;
+    transform: scale(1.1);
 }
 
 /* Heading and Text */
 .madrasa-heading {
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1.2;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: #1a3c34;
 }
 
 .title-border-radius {
+    border-radius: 12px;
+    background: rgba(0, 100, 0, 0.15);
+    transition: background 0.3s ease;
+}
+
+.title-border-radius:hover {
+    background: rgba(0, 100, 0, 0.3);
+}
+
+.about-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* About Items */
+.about-item {
+    padding: 15px;
+    background: #fff;
     border-radius: 10px;
-    background: rgba(0, 100, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-item i {
+    transition: transform 0.3s ease;
+}
+
+.about-item:hover i {
+    transform: scale(1.2);
+}
+
+.about-item h6 {
+    font-size: 1rem;
+    color: #333;
+}
+
+.about-item p {
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 /* Button */
 .madrasa-btn {
-    border-radius: 25px;
+    border-radius: 30px;
     background: #006400;
     border: 2px solid #006400;
-    font-weight: 600;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
+    font-weight: 700;
+    padding: 12px 30px;
+    color: #fff;
     text-transform: uppercase;
-    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.madrasa-btn::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.2);
+    top: -50%;
+    left: -50%;
+    transition: transform 0.5s ease;
+    transform: scale(0);
+    border-radius: 50%;
+}
+
+.madrasa-btn:hover::after {
+    transform: scale(1);
 }
 
 .madrasa-btn:hover {
     background: #008000;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+    border-color: #008000;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.4);
 }
 
 /* Responsive Design */
 @media (min-width: 576px) {
-    .madrasa-video {
-        min-height: 250px;
-    }
-
     .madrasa-heading {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
-
-    .madrasa-btn {
-        padding: 12px 30px;
+    .madrasa-video-wrapper {
+        max-width: 450px;
     }
 }
 
 @media (min-width: 768px) {
     .about {
-        padding: 3rem 0;
+        padding: 4rem 0;
     }
-
-    .madrasa-video {
-        min-height: 300px;
-    }
-
     .madrasa-heading {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    .madrasa-video-wrapper {
+        max-width: 500px;
     }
 }
 
@@ -610,17 +799,265 @@ h6,
     .about {
         padding: 5rem 0;
     }
-
     .madrasa-heading {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
-
     .madrasa-btn {
         padding: 15px 40px;
     }
 }
 
+@media (max-width: 767px) {
+    .madrasa-video-wrapper {
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    .about-item {
+        margin-bottom: 1rem;
+    }
+}
 /*** About End ***/
+
+
+/*** Our Institution Start ***/
+.institution {
+    background: linear-gradient(rgba(245, 248, 240, 0.9), rgba(245, 248, 240, 0.9));
+    position: relative;
+    padding: 3rem 0;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/institution-pattern.jpg) center center / cover no-repeat;
+    z-index: -1;
+    animation: parallaxMove 20s infinite linear;
+}
+
+@keyframes parallaxMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+/* Carousel */
+.institution-carousel {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: #006400;
+}
+
+.dot:hover {
+    background: #008000;
+}
+
+/* Heading and Text */
+.institution-heading {
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #1a3c34;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title-border-radius {
+    border-radius: 12px;
+    background: rgba(0, 100, 0, 0.15);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.title-border-radius:hover {
+    transform: scale(1.05);
+    background: rgba(0, 100, 0, 0.3);
+}
+
+.institution-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Feature Items */
+.institution-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.feature-item {
+    flex: 1 1 30%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    background: rgba(0, 100, 0, 0.1);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    transform: scale(1.2);
+    background: #006400;
+    color: #fff;
+}
+
+.feature-item h6 {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Button */
+.institution-btn {
+    border-radius: 30px;
+    background: #006400;
+    border: 2px solid #006400;
+    font-weight: 700;
+    padding: 12px 30px;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.institution-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.institution-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.institution-btn:hover {
+    background: #008000;
+    border-color: #008000;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 100, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .institution-heading {
+        font-size: 2.5rem;
+    }
+    .carousel-images {
+        height: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .institution {
+        padding: 4rem 0;
+    }
+    .institution-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .institution {
+        padding: 5rem 0;
+    }
+    .institution-heading {
+        font-size: 3.5rem;
+    }
+    .institution-btn {
+        padding: 15px 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .institution-carousel {
+        margin-bottom: 2rem;
+    }
+    .feature-item {
+        flex: 1 1 100%;
+    }
+    .carousel-images {
+        height: 300px;
+    }
+}
+/*** Our Institution End ***/
+
 
 /*** Vision Mission Objectives Start ***/
 .vmo {
@@ -643,22 +1080,15 @@ h6,
 }
 
 @keyframes headingPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 /* Flip Card Enhancements */
 .vmo .vmo-flip-card {
     perspective: 1000px;
-    height: 300px;
     transition: transform 0.3s ease;
+    margin-bottom: 1.5rem; /* Add spacing between cards */
 }
 
 .vmo .vmo-flip-card:hover {
@@ -701,7 +1131,6 @@ h6,
     background: #006400;
     color: #fff;
     background-image: url('https://via.placeholder.com/300?text=Islamic+Pattern');
-    /* Replace with actual Islamic pattern */
     background-size: cover;
     background-blend-mode: overlay;
 }
@@ -791,13 +1220,8 @@ h6,
 
 /* Keyframe Animations */
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Responsive Design */
@@ -805,7 +1229,6 @@ h6,
     .vmo .madrasa-heading {
         font-size: 2.5rem;
     }
-
     .vmo .vmo-icon {
         width: 70px;
         height: 70px;
@@ -817,31 +1240,40 @@ h6,
     .vmo {
         padding: 4rem 0;
     }
-
     .vmo .madrasa-heading {
         font-size: 3rem;
     }
-
     .vmo h3 {
         font-size: 1.75rem;
     }
 }
 
-/* Mobile Click Interaction */
+/* Mobile Adjustments */
 @media (max-width: 767px) {
-    .vmo .vmo-flip-card:hover .vmo-flip-inner {
-        transform: rotateY(0deg);
-        /* Disable hover on mobile */
-    }
-
-    .vmo .vmo-flip-card.active .vmo-flip-inner {
-        transform: rotateY(180deg);
-        /* Flip on click */
-    }
-
     .vmo .vmo-flip-card {
-        height: auto;
-        min-height: 250px;
+        height: auto; /* Remove fixed height */
+        min-height: 0; /* Let content dictate height */
+        margin-bottom: 2rem; /* Increase spacing */
+    }
+    .vmo .vmo-flip-card:hover .vmo-flip-inner {
+        transform: rotateY(0deg); /* Disable hover flip */
+    }
+    .vmo .vmo-flip-card.active .vmo-flip-inner {
+        transform: rotateY(180deg); /* Flip on click */
+    }
+    .vmo .vmo-flip-front,
+    .vmo .vmo-flip-back {
+        position: relative; /* Fix overlap by removing absolute positioning */
+        height: auto; /* Allow natural height */
+    }
+    .vmo .vmo-flip-back {
+        display: none; /* Hide back by default */
+    }
+    .vmo .vmo-flip-card.active .vmo-flip-front {
+        display: none; /* Hide front when active */
+    }
+    .vmo .vmo-flip-card.active .vmo-flip-back {
+        display: block; /* Show back when active */
     }
 }
 
@@ -849,24 +1281,19 @@ h6,
     .vmo {
         padding: 2rem 0;
     }
-
     .vmo .madrasa-heading {
         font-size: 1.75rem;
     }
-
     .vmo h3 {
         font-size: 1.25rem;
     }
-
     .vmo p {
         font-size: 0.9rem;
     }
-
     .vmo .madrasa-btn {
         padding: 8px 20px;
     }
 }
-
 /*** Vision Mission Objectives End ***/
 
 
@@ -1597,10 +2024,10 @@ h6,
 /*** Blog End ***/
 
 
-/*** Team Start ***/
-.team {
-    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/madrasa-pattern.jpg);
+/*** Director's Message Start ***/
+.director-message {
+    background: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)),
+        url(../img/director-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1609,184 +2036,397 @@ h6,
     overflow: hidden;
 }
 
-/* Animated Heading */
-.team .madrasa-heading {
-    font-size: 2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    color: #006400;
-    animation: headingPulse 2s infinite ease-in-out;
-    font-family: 'Amiri', serif; /* Calligraphy-inspired font */
-}
-
-@keyframes headingPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-/* Book Card Styling */
-.team .team-book-card {
-    perspective: 1000px;
-    height: 450px; /* Fixed height for consistency */
+/* Image Wrapper */
+.director-img-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
-.team .team-book-card:hover {
+.director-img-wrapper:hover {
     transform: scale(1.05);
 }
 
-.team .team-book-inner {
-    position: relative;
+.director-img {
     width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.2);
-}
-
-.team .team-book-card:hover .team-book-inner {
-    transform: rotateY(-180deg);
-}
-
-.team .team-book-cover,
-.team .team-book-page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border: 2px solid #006400;
-    background: linear-gradient(135deg, #fff, #f0f8eb);
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.team .team-book-cover {
-    z-index: 2;
-}
-
-.team .team-book-page {
-    transform: rotateY(180deg);
-    background: #006400 url('https://via.placeholder.com/300?text=Islamic+Motif') center/cover;
-    background-blend-mode: overlay;
-}
-
-/* Image Styling */
-.team .team-img {
-    height: 70%;
+    height: auto;
     object-fit: cover;
-    border-bottom: 2px solid #006400;
     transition: transform 0.5s ease;
 }
 
-.team .team-book-card:hover .team-img {
+.director-img-wrapper:hover .director-img {
     transform: scale(1.1);
 }
 
-/* Cover Content */
-.team .team-cover-content {
-    background: #fff;
-    border-top: 2px solid #006400;
+/* Animated Heading */
+.director-heading {
+    font-size: 2.5rem;
+    color: #1a3c34;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: slideInLeft 1s ease-out;
 }
 
-.team .madrasa-title {
-    font-size: 1.5rem;
-    color: #006400;
-    margin-bottom: 10px;
-    font-family: 'Amiri', serif; /* Calligraphy-inspired font */
-    transition: color 0.3s ease;
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-.team .team-book-card:hover .madrasa-title {
-    color: #008000;
+/* Text Animation */
+.director-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out 0.5s;
+    animation-fill-mode: both;
 }
 
-.team .madrasa-subtitle {
-    font-size: 0.95rem;
-    font-family: 'Lato', sans-serif;
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Page Content */
-.team .team-book-page h5 {
-    font-size: 1.25rem;
-    margin-bottom: 15px;
-    font-family: 'Amiri', serif;
-    animation: fadeIn 1s ease;
+/* Ripple Button */
+.ripple-btn {
+    position: relative;
+    background: #1a3c34;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 25px;
+    padding: 10px 25px;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.team .team-book-page p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    font-family: 'Lato', sans-serif;
+.ripple-btn:hover {
+    background: #2e5c52;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Social Icons */
-.team .team-social a {
-    background: #006400;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    transition: all 0.3s ease;
+.ripple-btn::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    pointer-events: none;
 }
 
-.team .team-social a:hover {
-    background: #008000;
-    transform: rotate(360deg) scale(1.2);
-    box-shadow: 0 5px 10px rgba(0, 100, 0, 0.3);
+.ripple-btn:active::after {
+    animation: none;
+    transform: scale(0);
 }
 
-/* Animation */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+/* Trigger ripple on click */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
 
 /* Responsive Design */
-@media (min-width: 576px) {
-    .team .madrasa-heading {
-        font-size: 2.5rem;
+@media (max-width: 991px) {
+    .director-heading {
+        font-size: 2rem;
     }
-    .team .madrasa-title {
-        font-size: 1.75rem;
+    .director-img-wrapper {
+        max-width: 300px;
+    }
+    .director-text {
+        font-size: 1rem;
     }
 }
 
+@media (max-width: 576px) {
+    .director-message {
+        padding: 2rem 0;
+    }
+    .director-heading {
+        font-size: 1.75rem;
+    }
+    .director-img-wrapper {
+        max-width: 250px;
+    }
+    .director-text {
+        font-size: 0.95rem;
+    }
+    .ripple-btn {
+        padding: 8px 20px;
+    }
+}
+/*** Director's Message End ***/
+
+/*** Team Start ***/
+.team {
+    background: linear-gradient(to bottom, rgba(0, 100, 0, 0.7), rgba(0, 0, 0, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Heading Animation */
+.team-heading {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    font-family: 'Amiri', serif;
+    animation: fadeGlow 2s infinite ease-in-out;
+}
+
+@keyframes fadeGlow {
+    0%, 100% { opacity: 0.8; text-shadow: 0 0 15px rgba(0, 255, 0, 0.7); }
+    50% { opacity: 1; text-shadow: 0 0 25px rgba(0, 255, 0, 1); }
+}
+
+/* Team Circle - Increased Size */
+.team-circle {
+    position: relative;
+    width: 280px; /* Increased from 220px */
+    height: 280px; /* Increased from 220px */
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    animation: rotateBorder 10s infinite linear;
+    border: 4px solid transparent;
+    background: conic-gradient(#006400, #008000, #006400);
+}
+
+.team-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.team-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.team-circle:hover img {
+    opacity: 0.7;
+}
+
+/* Overlay */
+.team-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 100, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+}
+
+.team-circle:hover .team-overlay {
+    opacity: 1;
+}
+
+.team-title {
+    font-size: 1.5rem; /* Slightly increased for larger circle */
+    color: #fff;
+    font-family: 'Amiri', serif;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.team-subtitle {
+    font-size: 1rem; /* Slightly increased for larger circle */
+    color: #f0f8eb;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+/* Modal */
+.team-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-modal-content {
+    background: linear-gradient(135deg, #006400, #008000);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    max-width: 400px;
+    width: 90%;
+    animation: popIn 0.4s ease;
+    position: relative;
+}
+
+.team-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.team-modal-close:hover {
+    color: #f0f8eb;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-family: 'Amiri', serif;
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 1rem;
+    color: #f0f8eb;
+}
+
+.modal-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+/* Social Icons */
+.team-social {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    color: #006400;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.social-icon:hover {
+    background: #008000;
+    color: #fff;
+    transform: rotate(360deg) scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
 @media (min-width: 768px) {
     .team {
         padding: 4rem 0;
     }
-    .team .madrasa-heading {
+    .team-heading {
         font-size: 3rem;
+    }
+    .team-circle {
+        width: 300px; /* Increased from 250px */
+        height: 300px; /* Increased from 250px */
+    }
+    .team-title {
+        font-size: 1.75rem; /* Adjusted for larger circle */
+    }
+    .team-subtitle {
+        font-size: 1.1rem; /* Adjusted for larger circle */
     }
 }
 
 @media (max-width: 767px) {
-    .team .team-book-card:hover .team-book-inner {
-        transform: rotateY(0deg); /* Disable hover on mobile */
-    }
-    .team .team-book-card.active .team-book-inner {
-        transform: rotateY(-180deg); /* Flip on click */
-    }
-    .team .team-book-card {
-        height: auto;
-        min-height: 400px;
+    .team-circle {
+        width: 240px; /* Increased from 200px */
+        height: 240px; /* Increased from 200px */
     }
 }
 
 @media (max-width: 576px) {
     .team {
-        padding: 2rem 0;
+        padding: 1.5rem 0;
     }
-    .team .madrasa-heading {
+    .team-heading {
         font-size: 1.75rem;
     }
-    .team .madrasa-title {
+    .team-circle {
+        width: 200px; /* Increased from 180px */
+        height: 200px; /* Increased from 180px */
+    }
+    .team-title {
+        font-size: 1.25rem; /* Adjusted for larger circle */
+    }
+    .team-subtitle {
+        font-size: 0.9rem; /* Adjusted for larger circle */
+    }
+    .modal-title {
         font-size: 1.25rem;
     }
-    .team .madrasa-subtitle,
-    .team .team-book-page p {
+    .modal-subtitle {
+        font-size: 0.9rem;
+    }
+    .modal-desc {
         font-size: 0.85rem;
     }
 }
 /*** Team End ***/
+
 
 /*** Testimonial Start ***/
 .testimonial {
