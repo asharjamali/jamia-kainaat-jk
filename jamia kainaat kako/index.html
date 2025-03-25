@@ -464,7 +464,7 @@
 <!-- Admission Button Section Start -->
 <section class="admission-section">
     <div class="glow-circle"></div>
-    <a href="admission.html" class="admission-btn" id="admissionBtn">Take Admission Now</a>
+    <a href="addmission.html" class="admission-btn" id="admissionBtn">Take Admission Now</a>
     <div class="particles" id="particles"></div>
     <div class="floating-elements">
         <div class="float-item star"></div>
@@ -1068,59 +1068,55 @@
 
 
         <!-- Enquiry Start -->
-        <div class="container-fluid enquiry py-5">
-            <div class="container py-5">
-                <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                    <h4
-                        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
-                        Get in Touch
-                    </h4>
-                    <h1 class="mb-5 display-3 fw-bold madrasa-heading">Enquiry & Location</h1>
+    <!-- Enquiry Section Start -->
+<section class="enquiry-section" id="enquirySection">
+    <div class="bg-gradient"></div>
+    <div class="logo-wrapper">
+        <div class="logo-core">
+            <img src="./img/logo.jpg" alt="School Logo" class="school-logo" id="schoolLogo">
+            <div class="logo-ring ring-1"></div>
+            <div class="logo-ring ring-2"></div>
+            <div class="logo-particlesid="logoParticles"></div>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <h1 class="hero-title"> Get Enquiry!</h1>
+        <div class="enquiry-container">
+            <form class="enquiry-form" id="enquiryForm">
+                <div class="form-grid">
+                    <input type="text" placeholder="Your Name" required class="form-input">
+                    <input type="email" placeholder="Your Email" required class="form-input">
+                    <input type="tel" placeholder="Phone Number" required class="form-input">
+                    <input type="text" placeholder="Parents' Name" required class="form-input">
+                    <input type="text" placeholder="Place/City" required class="form-input">
+                    <select required class="form-input">
+                        <option value="" disabled selected>Select Grade</option>
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="3">Grade 3</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                    </select>
                 </div>
-                <div class="row g-5 align-items-stretch">
-                    <!-- Enquiry Form -->
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="enquiry-form bg-white p-4 rounded shadow-sm h-100">
-                            <h3 class="text-dark fw-semibold mb-4">Send Us a Message</h3>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label text-muted">Full Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter your name"
-                                        required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label text-muted">Email Address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
-                                        required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label text-muted">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone"
-                                        placeholder="Enter your phone number" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label text-muted">Your Message</label>
-                                    <textarea class="form-control" id="message" rows="4"
-                                        placeholder="How can we assist you?" required></textarea>
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary px-5 py-2 madrasa-btn">Submit
-                                        Enquiry</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Map -->
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="enquiry-map rounded shadow-sm h-100">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153167!3d-37.81627997975146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8f8a23b8e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1635782345678!5m2!1sen!2sus"
-                                allowfullscreen="" loading="lazy" class="w-100 h-100"></iframe>
-                        </div>
-                    </div>
-                </div>
+                <textarea placeholder="Your Enquiry" rows="4" required class="form-textarea"></textarea>
+                <button type="submit" class="epic-btn" id="submitBtn">
+                    <span class="btn-text">Send Enquiry</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </form>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509371!2d144.9537353153167!3d-37.81627997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727e4f6f1c5b0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1635789876543!5m2!1sen!2sus" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    class="google-map">
+                </iframe>
             </div>
         </div>
+    </div>
+    <div class="section-particles" id="particles"></div>
+</section>
+<!-- Enquiry Section End -->
         <!-- Enquiry End -->
 
 

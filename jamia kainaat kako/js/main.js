@@ -422,7 +422,7 @@ function submitQuickForm(event) {
 
 
 // Admission Button JavaScript
-const particlesContainer = document.getElementById('particles');
+
 const admissionBtn = document.getElementById('admissionBtn');
 const admissionSection = document.getElementById('admissionSection');
 
@@ -468,6 +468,111 @@ window.addEventListener('load', () => {
     }, 100);
 });
  // Admission Button JavaScript
+
+
+
+ // Enquiry Section JavaScript
+
+// Enquiry Section JavaScript
+const particlesContainer = document.getElementById('particles');
+const logoParticlesContainer = document.getElementById('logoParticles');
+const enquirySection = document.getElementById('enquirySection');
+const enquiryForm = document.getElementById('enquiryForm');
+const schoolLogo = document.getElementById('schoolLogo');
+const submitBtn = document.getElementById('submitBtn');
+
+function createParticle(container, x, y, isLogo = false) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    const size = Math.random() * (isLogo ? 6 : 10) + 4;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = x ? `${x}px` : `${Math.random() * 100}%`;
+    particle.style.top = y ? `${y}px` : `${Math.random() * 100}%`;
+    particle.style.animation = `float ${Math.random() * 3 + 2}s infinite ease-in-out`;
+    container.appendChild(particle);
+
+    setTimeout(() => particle.remove(), isLogo ? 2500 : 4000);
+}
+
+// Continuous particle generation
+setInterval(() => createParticle(particlesContainer), 200);
+setInterval(() => createParticle(logoParticlesContainer), 400);
+
+// Section entrance animation
+window.addEventListener('load', () => {
+    enquirySection.style.opacity = '0';
+    enquirySection.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        enquirySection.style.transition = 'all 1.2s ease-out';
+        enquirySection.style.opacity = '1';
+        enquirySection.style.transform = 'scale(1)';
+    }, 100);
+});
+
+// Form field animation delay
+const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+formInputs.forEach((input, index) => {
+    input.style.animationDelay = `${index * 0.1}s`;
+});
+
+// Form submission animation
+enquiryForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const inputs = this.querySelectorAll('input, select, textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!input.value) {
+            isValid = false;
+            input.style.boxShadow = '0 0 20px #ff1493';
+            input.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                input.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+                input.style.transform = 'scale(1)';
+            }, 400);
+        }
+    });
+
+    if (isValid) {
+        this.style.opacity = '0';
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            alert('Enquiry Sent Successfully! We’re on it!');
+            this.style.opacity = '1';
+            this.style.transform = 'scale(1)';
+            inputs.forEach(input => input.value = '');
+        }, 600);
+    }
+});
+
+// Logo hover effect with particle burst
+schoolLogo.addEventListener('mousemove', (e) => {
+    const rect = schoolLogo.getBoundingClientRect();
+    createParticle(logoParticlesContainer, e.clientX - rect.left, e.clientY - rect.top, true);
+});
+
+// Button hover and click effects
+submitBtn.addEventListener('mousemove', (e) => {
+    const rect = submitBtn.getBoundingClientRect();
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.width = '8px';
+    particle.style.height = '8px';
+    particle.style.left = `${e.clientX - rect.left}px`;
+    particle.style.top = `${e.clientY - rect.top}px`;
+    submitBtn.appendChild(particle);
+    setTimeout(() => particle.remove(), 1000);
+});
+
+submitBtn.addEventListener('click', () => {
+    submitBtn.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        submitBtn.style.transform = 'scale(1.05) translateY(-3px)';
+    }, 200);
+});
+
+
 
 })(jQuery);
 
