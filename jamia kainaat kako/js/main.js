@@ -61,42 +61,87 @@
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentSlide = 0;
 
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentSlide = index;
 
-        // Re-trigger animations for active slide
-        const content = slides[index].querySelector('.slide-content');
-        const animatedElements = content.querySelectorAll('.animate__animated');
-        animatedElements.forEach(el => {
-            el.classList.remove('animate__fadeInDown', 'animate__fadeInUp', 'animate__pulse');
-            void el.offsetWidth; // Trigger reflow
-            if (el.classList.contains('slide-subtitle')) el.classList.add('animate__fadeInDown');
-            if (el.classList.contains('slide-title')) el.classList.add('animate__fadeInUp');
-            if (el.classList.contains('slide-quote')) el.classList.add('animate__fadeIn');
-            if (el.classList.contains('slider-btn')) el.classList.add('animate__pulse');
+    document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevArrow = document.querySelector('.slider-arrow.prev');
+        const nextArrow = document.querySelector('.slider-arrow.next');
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        let currentSlide = 0;
+        let autoSlideInterval;
+    
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+    
+            // Re-trigger animations
+            const content = slides[index].querySelector('.slide-content');
+            const subtitle = content.querySelector('.slide-subtitle');
+            const title = content.querySelector('.slide-title');
+            const quote = content.querySelector('.slide-quote');
+            const buttons = content.querySelectorAll('.btn');
+    
+            subtitle.style.animation = 'none';
+            title.style.animation = 'none';
+            quote.style.animation = 'none';
+            void content.offsetWidth; // Trigger reflow
+            subtitle.style.animation = 'fadeInDown 1s ease forwards';
+            title.style.animation = 'zoomIn 1.2s ease forwards';
+            quote.style.animation = 'fadeInUp 1.4s ease forwards';
+        }
+    
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+    
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetAutoSlide();
+            });
         });
-    }
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showSlide(index));
-    });
-
-    // Auto-slide every 6 seconds
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
+    
+        // Arrow navigation
+        nextArrow.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide();
+        });
+    
+        prevArrow.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+    
+        // Auto-slide
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 6000);
+        }
+    
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+    
+        // Pause on hover
+        sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+    
+        // Initial setup
         showSlide(currentSlide);
-    }, 6000);
-});
-
+        startAutoSlide();
+    });
 
 
 
