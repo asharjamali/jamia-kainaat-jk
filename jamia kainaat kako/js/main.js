@@ -109,7 +109,16 @@
         })
     });
 
-
+    document.addEventListener('DOMContentLoaded', () => {
+        const bookCards = document.querySelectorAll('.team-book-card');
+        bookCards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (window.innerWidth <= 767) {
+                    card.classList.toggle('active');
+                }
+            });
+        });
+    });
 
 })(jQuery);
 

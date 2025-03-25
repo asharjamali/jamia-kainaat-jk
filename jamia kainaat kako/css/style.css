@@ -97,9 +97,11 @@
     0% {
         background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 128, 0, 0.5));
     }
+
     50% {
         background: linear-gradient(135deg, rgba(0, 128, 0, 0.5), rgba(0, 100, 0, 0.8));
     }
+
     100% {
         background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 128, 0, 0.5));
     }
@@ -122,9 +124,11 @@
     .page-header {
         padding: 4rem 0;
     }
+
     .page-header .madrasa-heading {
         font-size: 4rem;
     }
+
     .circle-breadcrumb .breadcrumb-item::before {
         width: 12px;
         height: 12px;
@@ -135,18 +139,22 @@
     .page-header {
         padding: 2rem 0;
     }
+
     .page-header .madrasa-heading {
         font-size: 2rem;
     }
+
     .circle-breadcrumb .breadcrumb-item {
         font-size: 0.9rem;
         padding-left: 20px;
     }
+
     .circle-breadcrumb .breadcrumb-item::before {
         width: 8px;
         height: 8px;
     }
 }
+
 /*** Page Header End ***/
 
 /*** Common CSS Start ***/
@@ -622,18 +630,39 @@ h6,
     background-repeat: no-repeat;
     background-size: cover;
     padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Animated Heading */
 .vmo .madrasa-heading {
     font-size: 2rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     color: #006400;
+    animation: headingPulse 2s infinite ease-in-out;
 }
 
+@keyframes headingPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Flip Card Enhancements */
 .vmo .vmo-flip-card {
     perspective: 1000px;
     height: 300px;
-    /* Fixed height for consistency */
+    transition: transform 0.3s ease;
+}
+
+.vmo .vmo-flip-card:hover {
+    transform: scale(1.05);
 }
 
 .vmo .vmo-flip-inner {
@@ -642,6 +671,7 @@ h6,
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .vmo .vmo-flip-card:hover .vmo-flip-inner {
@@ -657,18 +687,26 @@ h6,
     background: #fff;
     border: 2px solid #006400;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .vmo .vmo-flip-front {
     z-index: 2;
+    background: linear-gradient(135deg, #fff, #f0f8eb);
+    position: relative;
 }
 
 .vmo .vmo-flip-back {
     transform: rotateY(180deg);
     background: #006400;
     color: #fff;
+    background-image: url('https://via.placeholder.com/300?text=Islamic+Pattern');
+    /* Replace with actual Islamic pattern */
+    background-size: cover;
+    background-blend-mode: overlay;
 }
 
+/* Icon Animation */
 .vmo .vmo-icon {
     background: rgba(0, 100, 0, 0.1);
     width: 60px;
@@ -676,31 +714,46 @@ h6,
     line-height: 60px;
     border-radius: 50%;
     margin: 0 auto;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .vmo .vmo-flip-front:hover .vmo-icon {
     background: #006400;
     color: #fff;
+    transform: rotate(360deg);
 }
 
+/* Text Styling */
 .vmo h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #333;
+    transition: color 0.3s ease;
+}
+
+.vmo .vmo-flip-front:hover h3 {
+    color: #006400;
 }
 
 .vmo .vmo-flip-back h4 {
     font-size: 1.25rem;
     margin-bottom: 15px;
+    animation: fadeIn 1s ease;
 }
 
 .vmo p {
     font-size: 0.95rem;
     color: #555;
     line-height: 1.6;
+    transition: color 0.3s ease;
 }
 
+.vmo .vmo-flip-back p {
+    color: #f0f8eb;
+}
+
+/* Button Animation */
 .vmo .madrasa-btn {
     border-radius: 25px;
     background: #006400;
@@ -710,6 +763,23 @@ h6,
     padding: 10px 30px;
     transition: all 0.3s ease;
     text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.vmo .madrasa-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    top: 0;
+    left: -100%;
+    transition: left 0.4s ease;
+}
+
+.vmo .madrasa-btn:hover::after {
+    left: 100%;
 }
 
 .vmo .madrasa-btn:hover {
@@ -717,6 +787,17 @@ h6,
     border-color: #008000;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Responsive Design */
@@ -760,7 +841,6 @@ h6,
 
     .vmo .vmo-flip-card {
         height: auto;
-        /* Allow dynamic height on mobile */
         min-height: 250px;
     }
 }
@@ -1518,56 +1598,294 @@ h6,
 
 
 /*** Team Start ***/
-.team .team-item {
+.team {
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Heading */
+.team .madrasa-heading {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #006400;
+    animation: headingPulse 2s infinite ease-in-out;
+    font-family: 'Amiri', serif; /* Calligraphy-inspired font */
+}
+
+@keyframes headingPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Book Card Styling */
+.team .team-book-card {
+    perspective: 1000px;
+    height: 450px; /* Fixed height for consistency */
+    transition: transform 0.3s ease;
+}
+
+.team .team-book-card:hover {
+    transform: scale(1.05);
+}
+
+.team .team-book-inner {
     position: relative;
     width: 100%;
     height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.2);
 }
 
-.team .team-item .team-icon {
+.team .team-book-card:hover .team-book-inner {
+    transform: rotateY(-180deg);
+}
+
+.team .team-book-cover,
+.team .team-book-page {
     position: absolute;
-    bottom: 120px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #006400;
+    background: linear-gradient(135deg, #fff, #f0f8eb);
+    overflow: hidden;
+    border-radius: 15px;
 }
 
-.team .team-item .team-icon a.share-link {
-    opacity: 0;
-    transition: 0.5s;
+.team .team-book-cover {
+    z-index: 2;
 }
 
-.team .team-item:hover .team-icon a.share-link {
-    opacity: 1;
+.team .team-book-page {
+    transform: rotateY(180deg);
+    background: #006400 url('https://via.placeholder.com/300?text=Islamic+Motif') center/cover;
+    background-blend-mode: overlay;
 }
 
-.team .team-item .team-content,
-.team .team-item .team-content h4,
-.team .team-item .team-content p {
-    transition: 0.5s;
+/* Image Styling */
+.team .team-img {
+    height: 70%;
+    object-fit: cover;
+    border-bottom: 2px solid #006400;
+    transition: transform 0.5s ease;
 }
 
-.team .team-item:hover .team-content {
-    background: var(--bs-primary) !important;
-    border-radius: 0 0 10px 10px;
+.team .team-book-card:hover .team-img {
+    transform: scale(1.1);
 }
 
-.team .team-item:hover .team-content h4 {
-    color: var(--bs-white) !important;
+/* Cover Content */
+.team .team-cover-content {
+    background: #fff;
+    border-top: 2px solid #006400;
 }
 
-.team .team-item:hover .team-content p {
-    color: var(--bs-dark) !important;
+.team .madrasa-title {
+    font-size: 1.5rem;
+    color: #006400;
+    margin-bottom: 10px;
+    font-family: 'Amiri', serif; /* Calligraphy-inspired font */
+    transition: color 0.3s ease;
 }
 
-/*** Team end ***/
+.team .team-book-card:hover .madrasa-title {
+    color: #008000;
+}
 
+.team .madrasa-subtitle {
+    font-size: 0.95rem;
+    font-family: 'Lato', sans-serif;
+}
 
-/*** testimonial Start ***/
+/* Page Content */
+.team .team-book-page h5 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-family: 'Amiri', serif;
+    animation: fadeIn 1s ease;
+}
+
+.team .team-book-page p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Social Icons */
+.team .team-social a {
+    background: #006400;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    transition: all 0.3s ease;
+}
+
+.team .team-social a:hover {
+    background: #008000;
+    transform: rotate(360deg) scale(1.2);
+    box-shadow: 0 5px 10px rgba(0, 100, 0, 0.3);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .team .madrasa-heading {
+        font-size: 2.5rem;
+    }
+    .team .madrasa-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .team {
+        padding: 4rem 0;
+    }
+    .team .madrasa-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .team .team-book-card:hover .team-book-inner {
+        transform: rotateY(0deg); /* Disable hover on mobile */
+    }
+    .team .team-book-card.active .team-book-inner {
+        transform: rotateY(-180deg); /* Flip on click */
+    }
+    .team .team-book-card {
+        height: auto;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .team {
+        padding: 2rem 0;
+    }
+    .team .madrasa-heading {
+        font-size: 1.75rem;
+    }
+    .team .madrasa-title {
+        font-size: 1.25rem;
+    }
+    .team .madrasa-subtitle,
+    .team .team-book-page p {
+        font-size: 0.85rem;
+    }
+}
+/*** Team End ***/
+
+/*** Testimonial Start ***/
+.testimonial {
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Heading */
+.testimonial .madrasa-heading {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    color: #006400;
+    animation: headingPulse 2s infinite ease-in-out;
+}
+
+@keyframes headingPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Testimonial Carousel */
 .testimonial .testimonial-carousel {
     position: relative;
-
 }
 
+.testimonial .testimonial-item {
+    background: linear-gradient(135deg, #fff, #f0f8eb);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.testimonial .testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 100, 0, 0.2);
+}
+
+/* Quote Icon Animation */
+.testimonial .fa-quote-right {
+    transition: transform 0.3s ease;
+}
+
+.testimonial .testimonial-item:hover .fa-quote-right {
+    transform: scale(1.2);
+}
+
+/* Image Styling */
+.testimonial .testimonial-img {
+    transition: all 0.3s ease;
+}
+
+.testimonial .testimonial-item:hover .testimonial-img {
+    transform: scale(1.1);
+    border-color: #008000;
+}
+
+/* Text Styling */
+.testimonial h4 {
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.testimonial .testimonial-item:hover h4 {
+    color: #006400;
+}
+
+.testimonial p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.testimonial .border-top {
+    border-color: #006400 !important;
+}
+
+/* Stars Animation */
+.testimonial .fas.fa-star {
+    transition: transform 0.3s ease;
+}
+
+.testimonial .testimonial-item:hover .fas.fa-star {
+    transform: scale(1.2);
+}
+
+/* Owl Carousel Dots */
 .testimonial .testimonial-carousel .owl-dots {
     margin-top: 30px;
     display: flex;
@@ -1581,22 +1899,66 @@ h6,
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    background: var(--bs-primary);
+    background: #006400;
     border-radius: 10px;
-    transition: 0.5s;
+    transition: all 0.5s ease;
 }
 
 .testimonial .testimonial-carousel .owl-dot.active {
     width: 30px;
-    background: var(--bs-secondary);
+    background: #008000;
 }
 
-/*** testimonial End ***/
+/* Responsive Design */
+@media (min-width: 576px) {
+    .testimonial .madrasa-heading {
+        font-size: 2.5rem;
+    }
+
+    .testimonial h4 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .testimonial {
+        padding: 4rem 0;
+    }
+
+    .testimonial .madrasa-heading {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonial {
+        padding: 2rem 0;
+    }
+
+    .testimonial .madrasa-heading {
+        font-size: 1.75rem;
+    }
+
+    .testimonial h4 {
+        font-size: 1.25rem;
+    }
+
+    .testimonial p {
+        font-size: 0.9rem;
+    }
+
+    .testimonial .testimonial-img img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/*** Testimonial End ***/
 
 /*** Enquiry Start ***/
 .enquiry {
-    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)), 
-                url(../img/madrasa-pattern.jpg);
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1654,7 +2016,8 @@ h6,
 
 .enquiry .enquiry-map iframe {
     border: none;
-    min-height: 300px; /* Default for mobile */
+    min-height: 300px;
+    /* Default for mobile */
 }
 
 .enquiry .madrasa-btn {
@@ -1680,9 +2043,11 @@ h6,
     .enquiry .madrasa-heading {
         font-size: 2.5rem;
     }
+
     .enquiry .enquiry-form h3 {
         font-size: 1.75rem;
     }
+
     .enquiry .enquiry-map iframe {
         min-height: 350px;
     }
@@ -1692,9 +2057,11 @@ h6,
     .enquiry {
         padding: 4rem 0;
     }
+
     .enquiry .madrasa-heading {
         font-size: 3rem;
     }
+
     .enquiry .enquiry-map iframe {
         min-height: 400px;
     }
@@ -1704,6 +2071,7 @@ h6,
     .enquiry .enquiry-form {
         margin-bottom: 2rem;
     }
+
     .enquiry .enquiry-map iframe {
         min-height: 250px;
     }
@@ -1713,43 +2081,206 @@ h6,
     .enquiry {
         padding: 2rem 0;
     }
+
     .enquiry .madrasa-heading {
         font-size: 1.75rem;
     }
+
     .enquiry .enquiry-form h3 {
         font-size: 1.25rem;
     }
+
     .enquiry .form-control {
         font-size: 0.9rem;
     }
+
     .enquiry .madrasa-btn {
         padding: 8px 20px;
     }
 }
+
 /*** Enquiry End ***/
 
 
 /*** Footer Start ***/
 .footer {
-    background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, 1)), url(../img/background.jpg);
+    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
+        url(../img/madrasa-pattern.jpg);
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
-.footer .footer-galary-img img {
-    width: 100%;
-    border-style: dotted;
-    border-color: var(--bs-primary);
-    transition: 0.5s;
+/* Footer Item Styling */
+.footer .footer-item h2 {
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-.footer .footer-galary-img img:hover {
+.footer .footer-item h2:hover {
+    transform: scale(1.05);
+}
+
+.footer .footer-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-item:hover p {
+    color: #006400;
+}
+
+/* Newsletter Box */
+.footer .newsletter-box {
+    background: linear-gradient(135deg, #fff, #f0f8eb);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer .newsletter-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.2);
+}
+
+.footer .madrasa-btn {
+    border-radius: 25px;
+    background: #006400;
+    border: 2px solid #006400;
+    font-weight: 600;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.footer .madrasa-btn:hover {
+    background: #008000;
+    border-color: #008000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 100, 0, 0.3);
+}
+
+/* Timing Box */
+.footer .timing-box {
+    background: linear-gradient(135deg, #fff, #f0f8eb);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer .timing-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.2);
+}
+
+.footer .timing-box p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.footer .timing-box:hover p {
+    color: #006400;
+}
+
+/* Location Section */
+.footer .location-link {
+    font-size: 0.95rem;
+    color: #333;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer .location-link:hover {
+    color: #006400 !important;
+    padding-left: 5px;
+}
+
+.footer .location-link i {
+    transition: transform 0.3s ease;
+}
+
+.footer .location-link:hover i {
     transform: scale(1.2);
 }
 
-.footer-item a.text-body:hover {
-    color: var(--bs-secondary) !important;
+/* Social Icons */
+.footer .social-icon {
+    background: #006400;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    transition: all 0.3s ease;
+}
+
+.footer .social-icon:hover {
+    background: #008000;
+    transform: rotate(360deg);
+    box-shadow: 0 5px 10px rgba(0, 100, 0, 0.3);
+}
+
+/* Gallery Section */
+.footer .gallery-container {
+    position: relative;
+}
+
+.footer .footer-gallery-img {
+    transition: all 0.3s ease;
+}
+
+.footer .footer-gallery-img img {
+    width: 100%;
+    border-style: dotted;
+    border-color: #006400;
+    transition: transform 0.3s ease;
+}
+
+.footer .footer-gallery-img:hover {
+    transform: scale(1.1);
+    border-color: #008000;
+}
+
+.footer .footer-gallery-img:hover img {
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (min-width: 576px) {
+    .footer .footer-item h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer {
+        padding: 4rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 2rem 0;
+    }
+
+    .footer .footer-item h2 {
+        font-size: 1.75rem;
+    }
+
+    .footer .footer-item p,
+    .footer .location-link {
+        font-size: 0.9rem;
+    }
+
+    .footer .social-icon {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .footer .madrasa-btn {
+        padding: 6px 15px;
+    }
 }
 
 /*** Footer End ***/
