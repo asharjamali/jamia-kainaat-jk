@@ -358,8 +358,116 @@ modal.addEventListener('click', (e) => {
 });
 
 
+// addmission
+function createParticle() {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    const size = Math.random() * 10 + 5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.animationDelay = `${Math.random() * 2}s`;
+    particlesContainer.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 4000);
+}
+
+// Create particles every 300ms
+setInterval(createParticle, 300);
+
+// Button click animation and form reveal
+
+const quickForm = document.getElementById('quickForm');
+
+admissionBtn.addEventListener('click', function() {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        this.style.transform = 'scale(1.1) translateY(-5px)';
+        quickForm.style.display = 'block';
+        admissionBtn.style.display = 'none';
+    }, 200);
+});
+
+// Form submission simulation
+function submitQuickForm(event) {
+    event.preventDefault();
+    const form = quickForm.querySelectorAll('input');
+    let isValid = true;
+
+    form.forEach(input => {
+        if (!input.value) {
+            isValid = false;
+            input.style.borderColor = '#ff6b6b';
+        } else {
+            input.style.borderColor = '#4ecdc4';
+        }
+    });
+
+    if (isValid) {
+        quickForm.style.opacity = '0';
+        setTimeout(() => {
+            alert('Quick registration successful! Proceed to full form.');
+            quickForm.style.display = 'none';
+            admissionBtn.style.display = 'block';
+            admissionBtn.style.transform = 'scale(1)';
+            quickForm.style.opacity = '1';
+            form.forEach(input => input.value = '');
+        }, 500);
+    }
+}
 
 
+
+// Admission Button JavaScript
+const particlesContainer = document.getElementById('particles');
+const admissionBtn = document.getElementById('admissionBtn');
+const admissionSection = document.getElementById('admissionSection');
+
+function createParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    const size = Math.random() * 15 + 5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = x ? `${x}px` : `${Math.random() * 100}%`;
+    particle.style.top = y ? `${y}px` : `${Math.random() * 100}%`;
+    particle.style.animation = `float ${Math.random() * 3 + 2}s infinite ease-in-out`;
+    particlesContainer.appendChild(particle);
+
+    setTimeout(() => particle.remove(), 4000);
+}
+
+// Interactive particle burst on button hover
+admissionBtn.addEventListener('mousemove', (e) => {
+    const rect = admissionBtn.getBoundingClientRect();
+    createParticle(e.clientX - rect.left, e.clientY - rect.top);
+});
+
+// Continuous particle generation
+setInterval(() => createParticle(), 200);
+
+// Button click animation
+admissionBtn.addEventListener('click', function(e) {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        this.style.transform = 'scale(1.1) translateY(-8px)';
+    }, 150);
+});
+
+// Section entrance animation
+window.addEventListener('load', () => {
+    admissionSection.style.opacity = '0';
+    admissionSection.style.transform = 'translateY(50px)';
+    setTimeout(() => {
+        admissionSection.style.transition = 'all 1s ease-out';
+        admissionSection.style.opacity = '1';
+        admissionSection.style.transform = 'translateY(0)';
+    }, 100);
+});
+ // Admission Button JavaScript
 
 })(jQuery);
 

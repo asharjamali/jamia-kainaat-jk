@@ -1253,6 +1253,140 @@ h6,
 
 /*** Our Institution End ***/
 
+/*** Admission Button Styles ***/
+.admission-section {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.glow-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 6s infinite ease-in-out;
+}
+
+.admission-btn {
+    display: inline-block;
+    padding: 20px 60px;
+    font-size: 1.6em;
+    color: #fff;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    z-index: 1;
+}
+
+.admission-btn:hover {
+    transform: scale(1.1) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(255, 107, 107, 0.7);
+}
+
+.admission-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+    z-index: -1;
+}
+
+.admission-btn:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.float-item {
+    position: absolute;
+    opacity: 0.7;
+    animation: floatRotate 8s infinite ease-in-out;
+}
+
+.star { 
+    width: 20px; 
+    height: 20px; 
+    background: #fff; 
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    top: 20%;
+    left: 15%;
+}
+
+.circle { 
+    width: 15px; 
+    height: 15px; 
+    background: #4ecdc4; 
+    border-radius: 50%; 
+    top: 70%; 
+    left: 80%;
+}
+
+.triangle { 
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent; 
+    border-right: 10px solid transparent; 
+    border-bottom: 17px solid #ff6b6b; 
+    top: 40%; 
+    left: 60%;
+}
+
+/*** Animations ***/
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+@keyframes floatRotate {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+/*** addmission end ***/
 
 /*** Vision Mission Objectives Start ***/
 .vmo {

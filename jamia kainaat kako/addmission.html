@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive School Admission Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            padding: 40px;
+            overflow-x: hidden;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .logo-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            transition: all 0.5s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        h2 {
+            color: #222;
+            font-size: 2.2em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: rgb(224, 227, 228);
+            padding: 0 8px;
+            color: #555;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        input, select, textarea, .file-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: rgba(223, 226, 229, 0.9);
+        }
+
+        input:focus, select:focus, textarea:focus, .file-input:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+            outline: none;
+        }
+
+        .file-preview {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .submit-btn:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.4);
+        }
+
+        .error {
+            color: #ff3333;
+            font-size: 0.85em;
+            position: absolute;
+            bottom: -22px;
+            left: 18px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 5px;
+            background: #00c6ff;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 700px) {
+            .form-container {
+                padding: 25px;
+            }
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="logo-header">
+            <img src="./img/logo.jpg" alt="School Logo" class="logo" id="schoolLogo">
+            <h2>Admission Application</h2>
+        </div>
+
+        <form id="admissionForm" onsubmit="return validateAndSubmit(event)">
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <span class="error" id="nameError">Name must be at least 2 characters</span>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender *</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="grade">Applying for Grade *</label>
+                <select id="grade" name="grade" required>
+                    <option value="">Select Grade</option>
+                    <option value="1">Grade 1</option>
+                    <option value="2">Grade 2</option>
+                    <option value="3">Grade 3</option>
+                    <option value="4">Grade 4</option>
+                    <option value="5">Grade 5</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="aadhaar">Aadhaar Number *</label>
+                <input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{12}" required>
+                <span class="error" id="aadhaarError">Enter a valid 12-digit Aadhaar number</span>
+            </div>
+
+            <div class="form-group">
+                <label for="aadhaarUpload">Upload Aadhaar Card (PDF) *</label>
+                <input type="file" id="aadhaarUpload" name="aadhaarUpload" accept=".pdf" class="file-input" required>
+                <div class="file-preview" id="aadhaarPreview"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="marksheetUpload">Upload Marksheet (PDF) *</label>
+                <input type="file" id="marksheetUpload" name="marksheetUpload" accept=".pdf" class="file-input" required>
+                <div class="file-preview" id="marksheetPreview"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="parentName">Parent/Guardian Name *</label>
+                <input type="text" id="parentName" name="parentName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number *</label>
+                <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+                <span class="error" id="contactError">Enter a valid 10-digit number</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Residential Address *</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="progress-bar" id="progressBar"></div>
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        // File upload preview
+        const aadhaarUpload = document.getElementById('aadhaarUpload');
+        const marksheetUpload = document.getElementById('marksheetUpload');
+        const aadhaarPreview = document.getElementById('aadhaarPreview');
+        const marksheetPreview = document.getElementById('marksheetPreview');
+
+        aadhaarUpload.addEventListener('change', function() {
+            const file = this.files[0];
+            aadhaarPreview.textContent = file ? `Selected: ${file.name}` : '';
+        });
+
+        marksheetUpload.addEventListener('change', function() {
+            const file = this.files[0];
+            marksheetPreview.textContent = file ? `Selected: ${file.name}` : '';
+        });
+
+        // Form validation and submission
+        function validateAndSubmit(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // Name validation
+            const fullName = document.getElementById('fullName').value;
+            const nameError = document.getElementById('nameError');
+            if (fullName.length < 2) {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            // Aadhaar validation
+            const aadhaar = document.getElementById('aadhaar').value;
+            const aadhaarError = document.getElementById('aadhaarError');
+            const aadhaarPattern = /^[0-9]{12}$/;
+            if (!aadhaarPattern.test(aadhaar)) {
+                aadhaarError.style.display = 'block';
+                isValid = false;
+            } else {
+                aadhaarError.style.display = 'none';
+            }
+
+            // Contact validation
+            const contact = document.getElementById('contact').value;
+            const contactError = document.getElementById('contactError');
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(contact)) {
+                contactError.style.display = 'block';
+                isValid = false;
+            } else {
+                contactError.style.display = 'none';
+            }
+
+            // File upload validation
+            if (!aadhaarUpload.files.length || !marksheetUpload.files.length) {
+                alert('Please upload both Aadhaar and Marksheet PDFs');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const progressBar = document.getElementById('progressBar');
+                let progress = 0;
+                const form = document.getElementById('admissionForm');
+
+                // Simulate submission progress
+                const interval = setInterval(() => {
+                    progress += 20;
+                    progressBar.style.width = `${progress}%`;
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        form.style.opacity = '0';
+                        setTimeout(() => {
+                            alert('Application submitted successfully! PDF generated.');
+                            generatePDF();
+                            form.reset();
+                            form.style.opacity = '1';
+                            progressBar.style.width = '0%';
+                            aadhaarPreview.textContent = '';
+                            marksheetPreview.textContent = '';
+                        }, 500);
+                    }
+                }, 200);
+            }
+            return isValid;
+        }
+
+        // Simple PDF generation simulation (requires a library like jsPDF for real implementation)
+        function generatePDF() {
+            // For actual PDF generation, you'd need jsPDF library
+            // This is a simulation
+            console.log('Generating PDF with form data...');
+            const formData = new FormData(document.getElementById('admissionForm'));
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+        }
+
+        // Logo animation
+        const logo = document.getElementById('schoolLogo');
+        logo.addEventListener('mouseover', function() {
+            this.style.transform = 'rotate(360deg) scale(1.1)';
+        });
+        logo.addEventListener('mouseout', function() {
+            this.style.transform = 'rotate(0deg) scale(1)';
+        });
+    </script>
+</body>
+</html>
