@@ -1259,65 +1259,7 @@
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js">
-            <!-- Add this script at the bottom of your HTML file, just before the closing </body> tag -->
-
-            document.addEventListener('DOMContentLoaded', () => {
-                const slides = document.querySelectorAll('.slide');
-                const navDots = document.querySelectorAll('.nav-dot');
-                const mobileLinks = document.querySelectorAll('.mobile-link');
-                const mobileToggle = document.querySelector('.mobile-nav-toggle');
-                const mobileNav = document.querySelector('.mobile-nav');
-                let currentSlide = 0;
-                const slideInterval = 5000; // 5 seconds per slide
-
-                // Function to show a specific slide
-                function showSlide(index) {
-                    slides.forEach(slide => slide.classList.remove('active'));
-                    navDots.forEach(dot => dot.classList.remove('active'));
-                    mobileLinks.forEach(link => link.classList.remove('active'));
-
-                    slides[index].classList.add('active');
-                    navDots[index].classList.add('active');
-                    mobileLinks[index].classList.add('active');
-                    currentSlide = index;
-                }
-
-                // Automatic slide transition
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    showSlide(currentSlide);
-                }
-
-                // Start the slideshow
-                let slideshow = setInterval(nextSlide, slideInterval);
-
-                // Navigation dots click event
-                navDots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        clearInterval(slideshow); // Pause slideshow on manual click
-                        showSlide(index);
-                        slideshow = setInterval(nextSlide, slideInterval); // Restart
-                    });
-                });
-
-                // Mobile links click event
-                mobileLinks.forEach((link, index) => {
-                    link.addEventListener('click', () => {
-                        clearInterval(slideshow);
-                        showSlide(index);
-                        mobileNav.classList.remove('active'); // Close mobile nav
-                        slideshow = setInterval(nextSlide, slideInterval);
-                    });
-                });
-
-                // Mobile navigation toggle
-                mobileToggle.addEventListener('click', () => {
-                    mobileNav.classList.toggle('active');
-                });
-            });
-
-        </script>
+        <script src="js/main.js"> </script>
 </body>
 
 </html>
