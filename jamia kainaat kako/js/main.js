@@ -624,41 +624,69 @@ submitBtn.addEventListener('click', () => {
         submitBtn.style.transform = 'scale(1.05) translateY(-3px)';
     }, 200);
 });
+  
 
-//*program start
 
+// program start
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS
     AOS.init({
-        duration: 1000,
+        duration: 800,
         easing: 'ease-out-back',
-        once: true
+        once: false // Allow repeated animations on scroll
     });
 
-    // Progress Circle Animation
-    const circles = document.querySelectorAll('.progress-circle');
-    circles.forEach(circle => {
-        const progress = circle.dataset.progress;
-        const degree = (progress / 100) * 360;
-        circle.style.setProperty('--progress', `${degree}deg`);
+    // Program item interaction
+    const items = document.querySelectorAll('.program-item');
+    items.forEach(item => {
+        // Click/tap toggle
+        item.addEventListener('click', (e) => {
+            if (window.innerWidth <= 767) {
+                item.classList.toggle('active');
+                e.preventDefault();
+            }
+        });
+
+        // Desktop hover
+        if (window.innerWidth > 767) {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('active');
+                const fill = item.querySelector('.progress-fill');
+                fill.style.width = '0%'; // Reset for animation
+                setTimeout(() => {
+                    fill.style.width = fill.dataset.width || fill.style.width; // Animate back
+                }, 10);
+            });
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('active');
+            });
+        }
+
+        // Glow effect
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            item.style.setProperty('--x', `${x}px`);
+            item.style.setProperty('--y', `${y}px`);
+        });
     });
 
-    // Parallax effect
+    // Carousel-like animation on scroll
     window.addEventListener('scroll', () => {
-        const cards = document.querySelectorAll('.program-card');
-        cards.forEach(card => {
-            const rect = card.getBoundingClientRect();
-            const speed = 0.03;
+        const items = document.querySelectorAll('.program-item');
+        items.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const rotate = (rect.top - window.innerHeight) * -0.05;
             if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const yPos = (window.innerHeight - rect.top) * speed;
-                card.style.transform = `translateY(${yPos}px)`;
+                item.style.transform = `rotateY(${rotate}deg) scale(1.05)`;
+            } else {
+                item.style.transform = 'rotateY(0deg) scale(1)';
             }
         });
     });
 });
-
-//*program end
-
+// program end
 //* event start
 
 document.addEventListener('DOMContentLoaded', () => {
