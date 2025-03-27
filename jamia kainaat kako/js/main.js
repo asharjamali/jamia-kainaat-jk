@@ -687,6 +687,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 // program end
+
+
+
+// notice board start
+document.addEventListener('DOMContentLoaded', () => {
+    const noticePods = document.querySelectorAll('.madrasa-notice-pod');
+
+    // Position pods in a circle
+    noticePods.forEach(pod => {
+        const angle = pod.dataset.orbitAngle;
+        pod.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-225px) rotate(-${angle}deg)`;
+    });
+
+    // Click and touch effect
+    noticePods.forEach(pod => {
+        const handleSelection = (e) => {
+            e.preventDefault(); // Prevent link navigation for demo
+
+            // Reset all pods
+            noticePods.forEach(p => {
+                p.classList.remove('selected');
+                p.classList.remove('other-active');
+            });
+
+            // Mark clicked pod as selected
+            pod.classList.add('selected');
+
+            // Mark all other pods as other-active
+            noticePods.forEach(otherPod => {
+                if (otherPod !== pod) {
+                    otherPod.classList.add('other-active');
+                }
+            });
+
+            // Spark effect
+            const spark = document.createElement('div');
+            spark.className = 'madrasa-notice-spark';
+            const rect = pod.getBoundingClientRect();
+            const x = e.type === 'click' ? e.clientX : e.touches[0].clientX;
+            const y = e.type === 'click' ? e.clientY : e.touches[0].clientY;
+            spark.style.left = `${x - rect.left - 4}px`;
+            spark.style.top = `${y - rect.top - 4}px`;
+            pod.appendChild(spark);
+            setTimeout(() => spark.remove(), 800);
+        };
+
+        pod.addEventListener('click', handleSelection);
+        pod.addEventListener('touchstart', handleSelection);
+    });
+
+    // Hover sparkle effect
+    noticePods.forEach(pod => {
+        pod.addEventListener('mousemove', (e) => {
+            const spark = document.createElement('div');
+            spark.className = 'madrasa-notice-spark';
+            const rect = pod.getBoundingClientRect();
+            spark.style.left = `${e.clientX - rect.left - 4}px`;
+            spark.style.top = `${e.clientY - rect.top - 4}px`;
+            pod.appendChild(spark);
+            setTimeout(() => spark.remove(), 800);
+        });
+
+        // Optional: Add hover out effect to reset transform if needed
+        pod.addEventListener('mouseleave', () => {
+            if (!pod.classList.contains('selected') && !pod.classList.contains('other-active')) {
+                const angle = pod.dataset.orbitAngle;
+                pod.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-225px) rotate(-${angle}deg)`;
+            }
+        });
+    });
+
+    // Ensure smooth animation by forcing a reflow after positioning
+    requestAnimationFrame(() => {
+        const orbit = document.querySelector('.madrasa-notice-orbit');
+        orbit.style.animationPlayState = 'running';
+    });
+});
+//notice board end
 //* event start
 
 document.addEventListener('DOMContentLoaded', () => {

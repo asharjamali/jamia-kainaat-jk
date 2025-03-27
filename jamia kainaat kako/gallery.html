@@ -31,15 +31,14 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-        .madrasa-gallery {
+        .madrasa-unique-gallery {
             padding: 100px 30px;
             background: linear-gradient(135deg, #0f2c5c 0%, #1a6b5d 100%);
             position: relative;
             overflow: hidden;
         }
 
-        /* Decorative Elements */
-        .madrasa-gallery::after {
+        .madrasa-unique-gallery::after {
             content: '';
             position: absolute;
             top: 0;
@@ -50,46 +49,46 @@
             z-index: 1;
         }
 
-        .gallery-header {
+        .madrasa-gallery-header {
             text-align: center;
             margin-bottom: 60px;
             position: relative;
             z-index: 2;
         }
 
-        .title-animated {
+        .madrasa-title-animated {
             font-size: 4em;
-            color: #ffd700;
+            color: #0b9d26;
             font-family: 'Amiri', serif;
             text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             animation: pulseGlow 2s infinite;
         }
 
-        .title-decor {
+        .madrasa-title-decor {
             width: 100px;
             height: 4px;
-            background: #ffd700;
+            background: #078f24;
             margin: 20px auto;
             border-radius: 2px;
             position: relative;
         }
 
-        .title-decor::before,
-        .title-decor::after {
+        .madrasa-title-decor::before,
+        .madrasa-title-decor::after {
             content: '';
             position: absolute;
             width: 20px;
             height: 20px;
-            background: #ffd700;
+            background: #067a0c;
             border-radius: 50%;
             top: -8px;
         }
 
-        .title-decor::before {
+        .madrasa-title-decor::before {
             left: -30px;
         }
 
-        .title-decor::after {
+        .madrasa-title-decor::after {
             right: -30px;
         }
 
@@ -101,7 +100,7 @@
 
             50% {
                 transform: scale(1.05);
-                text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+                text-shadow: 0 0 20px rgba(50, 154, 6, 0.6);
             }
 
             100% {
@@ -110,7 +109,7 @@
             }
         }
 
-        .gallery-container {
+        .madrasa-gallery-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
@@ -120,7 +119,7 @@
             z-index: 2;
         }
 
-        .gallery-item {
+        .madrasa-gallery-item {
             position: relative;
             height: 350px;
             border-radius: 25px;
@@ -130,14 +129,14 @@
             transition: all 0.5s ease;
         }
 
-        .gallery-item img {
+        .madrasa-gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.7s ease;
         }
 
-        .item-overlay {
+        .madrasa-item-overlay {
             position: absolute;
             inset: 0;
             background: rgba(15, 44, 92, 0.85);
@@ -150,33 +149,32 @@
             padding: 20px;
         }
 
-        .gallery-item:hover .item-overlay {
+        .madrasa-gallery-item:hover .madrasa-item-overlay {
             opacity: 1;
         }
 
-        .item-overlay h3 {
-            color: #ffd700;
+        .madrasa-item-overlay h3 {
+            color: #19990b;
             font-size: 1.6em;
             margin: 0 0 10px 0;
             font-family: 'Amiri', serif;
         }
 
-        .item-overlay p {
+        .madrasa-item-overlay p {
             color: #fff;
             font-size: 1.1em;
             margin: 0;
         }
 
-        .gallery-item:hover {
+        .madrasa-gallery-item:hover {
             transform: perspective(1000px) translateZ(30px);
         }
 
-        .gallery-item:hover img {
+        .madrasa-gallery-item:hover img {
             transform: scale(1.2) rotate(2deg);
         }
 
-
-        /* Animation Classes */
+        /* Animation Classes remain the same as they are generic */
         .animate-fade-up {
             animation: fadeUp 1s ease-out forwards;
         }
@@ -197,87 +195,15 @@
             animation: zoomIn 1s ease-out forwards;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Sparkle Effect */
-        .sparkle {
+        /* Animation keyframes remain unchanged */
+        .madrasa-sparkle {
             position: absolute;
             width: 10px;
             height: 10px;
-            background: rgba(255, 215, 0, 0.7);
+            background: rgba(5, 160, 7, 0.7);
             border-radius: 50%;
             animation: sparkleFade 0.6s ease-out;
             pointer-events: none;
-        }
-
-        @keyframes sparkleFade {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
         }
     </style>
 
@@ -432,123 +358,157 @@
     <!-- Page Header End -->
 
     <!-- gallery Header start -->
+    <!-- gallery Header start -->
     <!-- Madrasa Education Gallery -->
-    <section class="madrasa-gallery">
-        <div class="gallery-header">
-            <h2 class="title-animated">Madrasa Legacy</h2>
-            <div class="title-decor"></div>
+    <section class="madrasa-unique-gallery">
+        <div class="madrasa-gallery-header">
+            <h2 class="madrasa-title-animated">Madrasa Legacy</h2>
+            <div class="madrasa-title-decor"></div>
         </div>
-        <div class="gallery-container">
-            <div class="gallery-item" data-animation="fade-up">
+        <div class="madrasa-gallery-container">
+            <div class="madrasa-gallery-item" data-animation="fade-up">
                 <img src="img/ashhar.jpg" alt="Quran Study" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Quranic Studies</h3>
                     <p>Deepening spiritual wisdom</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-right">
+            <div class="madrasa-gallery-item" data-animation="fade-right">
                 <img src="img/ashhar.jpg" alt="Arabic Calligraphy" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Arabic Calligraphy</h3>
                     <p>Mastering sacred arts</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-left">
+            <div class="madrasa-gallery-item" data-animation="fade-left">
                 <img src="img/ashhar.jpg" alt="Prayer Hall" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Communal Prayer</h3>
                     <p>Unity in worship</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="zoom-in">
+            <div class="madrasa-gallery-item" data-animation="zoom-in">
                 <img src="img/ashhar.jpg" alt="Islamic History" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Islamic History</h3>
                     <p>Learning our heritage</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-down">
+            <div class="madrasa-gallery-item" data-animation="fade-down">
                 <img src="img/ashhar.jpg" alt="Library" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Knowledge Haven</h3>
                     <p>Books of wisdom</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-up">
+            <div class="madrasa-gallery-item" data-animation="fade-up">
                 <img src="img/ashhar.jpg" alt="Scholar" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Learned Scholars</h3>
                     <p>Guiding the next generation</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-right">
+            <div class="madrasa-gallery-item" data-animation="fade-right">
                 <img src="img/ashhar.jpg" alt="Recitation" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Group Recitation</h3>
                     <p>Harmonious learning</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-left">
+            <div class="madrasa-gallery-item" data-animation="fade-left">
                 <img src="img/ashhar.jpg" alt="Islamic Art" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Islamic Arts</h3>
                     <p>Creative expression</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="zoom-in">
+            <div class="madrasa-gallery-item" data-animation="zoom-in">
                 <img src="img/ashhar.jpg" alt="Community" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Community Bonds</h3>
                     <p>Celebrating together</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-down">
+            <div class="madrasa-gallery-item" data-animation="fade-down">
                 <img src="img/ashhar.jpg" alt="Graduation" loading="lazy">
-                <div class="item-overlay">
+                <div class="madrasa-item-overlay">
                     <h3>Graduation Day</h3>
                     <p>Celebrating achievements</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-up">
-                <img src="img/ashhar.jpg" alt="Scholar" loading="lazy">
-                <div class="item-overlay">
-                    <h3>Learned Scholars</h3>
-                    <p>Guiding the next generation</p>
+            <div class="madrasa-gallery-item" data-animation="fade-up">
+                <img src="img/ashhar.jpg" alt="Morning Class" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Morning Lessons</h3>
+                    <p>Starting with knowledge</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-right">
-                <img src="img/ashhar.jpg" alt="Recitation" loading="lazy">
-                <div class="item-overlay">
-                    <h3>Group Recitation</h3>
-                    <p>Harmonious learning</p>
+            <div class="madrasa-gallery-item" data-animation="fade-right">
+                <img src="img/ashhar.jpg" alt="Study Group" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Study Circles</h3>
+                    <p>Collaborative learning</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-left">
-                <img src="img/ashhar.jpg" alt="Islamic Art" loading="lazy">
-                <div class="item-overlay">
-                    <h3>Islamic Arts</h3>
-                    <p>Creative expression</p>
+            <div class="madrasa-gallery-item" data-animation="fade-left">
+                <img src="img/ashhar.jpg" alt="Architecture" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Madrasa Architecture</h3>
+                    <p>Historical beauty</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="zoom-in">
-                <img src="img/ashhar.jpg" alt="Community" loading="lazy">
-                <div class="item-overlay">
-                    <h3>Community Bonds</h3>
-                    <p>Celebrating together</p>
+            <div class="madrasa-gallery-item" data-animation="zoom-in">
+                <img src="img/ashhar.jpg" alt="Lecture" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Guest Lectures</h3>
+                    <p>Sharing expertise</p>
                 </div>
             </div>
-            <div class="gallery-item" data-animation="fade-down">
-                <img src="img/ashhar.jpg" alt="Graduation" loading="lazy">
-                <div class="item-overlay">
-                    <h3>Graduation Day</h3>
-                    <p>Celebrating achievements</p>
+            <div class="madrasa-gallery-item" data-animation="fade-down">
+                <img src="img/ashhar.jpg" alt="Manuscript" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Ancient Manuscripts</h3>
+                    <p>Preserving knowledge</p>
+                </div>
+            </div>
+            <div class="madrasa-gallery-item" data-animation="fade-up">
+                <img src="img/ashhar.jpg" alt="Sports" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Sports Day</h3>
+                    <p>Physical development</p>
+                </div>
+            </div>
+            <div class="madrasa-gallery-item" data-animation="fade-right">
+                <img src="img/ashhar.jpg" alt="Discussion" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Group Discussions</h3>
+                    <p>Exchanging ideas</p>
+                </div>
+            </div>
+            <div class="madrasa-gallery-item" data-animation="fade-left">
+                <img src="img/ashhar.jpg" alt="Garden" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Madrasa Garden</h3>
+                    <p>Peaceful reflection</p>
+                </div>
+            </div>
+            <div class="madrasa-gallery-item" data-animation="zoom-in">
+                <img src="img/ashhar.jpg" alt="Ceremony" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Award Ceremony</h3>
+                    <p>Recognizing excellence</p>
+                </div>
+            </div>
+            <div class="madrasa-gallery-item" data-animation="fade-down">
+                <img src="img/ashhar.jpg" alt="Night Prayer" loading="lazy">
+                <div class="madrasa-item-overlay">
+                    <h3>Night Prayers</h3>
+                    <p>Spiritual devotion</p>
                 </div>
             </div>
         </div>
-
-
-
     </section>
+    <!-- gallery Header End -->
     <!-- gallery Header End -->
 
 
