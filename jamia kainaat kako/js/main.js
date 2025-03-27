@@ -473,14 +473,33 @@ window.addEventListener('load', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS
     AOS.init({
-        duration: 1000,
+        duration: 800,
         easing: 'ease-out-back',
         once: true
     });
 
-    // Interactive hover effects
-    const cards = document.querySelectorAll('.vmo-card');
+    // Card interaction
+    const cards = document.querySelectorAll('.vmo-alt-card');
     cards.forEach(card => {
+        const expandBtn = card.querySelector('.expand-btn');
+        const collapseBtn = card.querySelector('.collapse-btn');
+
+        // Click handler for expand/collapse
+        expandBtn.addEventListener('click', () => {
+            card.classList.add('active');
+        });
+
+        collapseBtn.addEventListener('click', () => {
+            card.classList.remove('active');
+        });
+
+        // Touch support for mobile
+        card.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            card.classList.toggle('active');
+        });
+
+        // Mouse hover glow effect
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -488,18 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.setProperty('--x', `${x}px`);
             card.style.setProperty('--y', `${y}px`);
         });
-
-        // Mobile tap toggle
-        card.addEventListener('click', () => {
-            if (window.innerWidth <= 767) {
-                card.classList.toggle('active');
-            }
-        });
     });
 
     // Parallax effect
     window.addEventListener('scroll', () => {
-        const cards = document.querySelectorAll('.vmo-card');
+        const cards = document.querySelectorAll('.vmo-alt-card');
         cards.forEach(card => {
             const rect = card.getBoundingClientRect();
             const speed = 0.02;
