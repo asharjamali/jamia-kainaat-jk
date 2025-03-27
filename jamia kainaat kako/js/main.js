@@ -469,7 +469,48 @@ window.addEventListener('load', () => {
 });
  // Admission Button JavaScript
 
+//* vesion mission objective start
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-out-back',
+        once: true
+    });
 
+    // Interactive hover effects
+    const cards = document.querySelectorAll('.vmo-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+        });
+
+        // Mobile tap toggle
+        card.addEventListener('click', () => {
+            if (window.innerWidth <= 767) {
+                card.classList.toggle('active');
+            }
+        });
+    });
+
+    // Parallax effect
+    window.addEventListener('scroll', () => {
+        const cards = document.querySelectorAll('.vmo-card');
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const speed = 0.02;
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const yPos = (window.innerHeight - rect.top) * speed;
+                card.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    });
+});
+//* vision mission objective end 
 
  // Enquiry Section JavaScript
 

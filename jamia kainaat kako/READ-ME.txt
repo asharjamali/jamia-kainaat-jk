@@ -1,9 +1,9 @@
   =>  Template Name    : Jamia Kainat
 
-  =>  Template Link    : https://htmlcodex.com/daycare-website-template
+  =>  Template Link    : https://htmlcodex.com/Jamiakainat-website-template
 
   =>  Template License : https://htmlcodex.com/license (or read the LICENSE.txt file)
 
-  =>  Template Author  : HTML Codex
+  =>  Template Author  : ashhar jamali
 
-  =>  Author Website   : https://htmlcodex.com
+  =>  Author Website   : https://zuridox.com

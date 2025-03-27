@@ -1407,275 +1407,298 @@ h6,
 /*** addmission end ***/
 
 /*** Vision Mission Objectives Start ***/
-.vmo {
-    background: linear-gradient(rgba(240, 248, 235, 0.9), rgba(240, 248, 235, 0.9)),
-        url(../img/background.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 3rem 0;
+.vmo-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 80px 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Animated Heading */
-.vmo .madrasa-heading {
-    font-size: 2rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+.vmo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="rgba(0,100,0,0.05)" d="M0,0 Q50,50 100,0 T200,0" /></svg>') repeat;
+}
+
+/* Header Styles */
+.vmo-header {
+    margin-bottom: 60px;
+}
+
+.vmo-subtitle {
     color: #006400;
-    animation: headingPulse 2s infinite ease-in-out;
+    font-size: 1.5em;
+    font-family: 'Amiri', serif;
+    background: rgba(255, 215, 0, 0.1);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    animation: float 3s ease-in-out infinite;
 }
 
-@keyframes headingPulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+.vmo-title {
+    color: #0f2c5c;
+    font-size: 3.5em;
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Flip Card Enhancements */
-.vmo .vmo-flip-card {
-    perspective: 1000px;
-    transition: transform 0.3s ease;
-    margin-bottom: 1.5rem;
-    /* Add spacing between cards */
+.header-decor {
+    width: 120px;
+    height: 5px;
+    background: #ffd700;
+    margin: 20px auto;
+    border-radius: 5px;
+    animation: expand 2s infinite;
 }
 
-.vmo .vmo-flip-card:hover {
-    transform: scale(1.05);
+/* VMO Card */
+.vmo-card {
+    perspective: 1500px;
+    height: 350px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.5s ease;
 }
 
-.vmo .vmo-flip-inner {
+.vmo-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     transform-style: preserve-3d;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.vmo .vmo-flip-card:hover .vmo-flip-inner {
+.vmo-card:hover .card-inner {
     transform: rotateY(180deg);
 }
 
-.vmo .vmo-flip-front,
-.vmo .vmo-flip-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background: #fff;
-    border: 2px solid #006400;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
-.vmo .vmo-flip-front {
-    z-index: 2;
+.card-front {
     background: linear-gradient(135deg, #fff, #f0f8eb);
-    position: relative;
-}
-
-.vmo .vmo-flip-back {
-    transform: rotateY(180deg);
-    background: #006400;
-    color: #fff;
-    background-image: url('https://via.placeholder.com/300?text=Islamic+Pattern');
-    background-size: cover;
-    background-blend-mode: overlay;
-}
-
-/* Icon Animation */
-.vmo .vmo-icon {
-    background: rgba(0, 100, 0, 0.1);
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    margin: 0 auto;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.vmo .vmo-flip-front:hover .vmo-icon {
-    background: #006400;
-    color: #fff;
-    transform: rotate(360deg);
-}
-
-/* Text Styling */
-.vmo h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
     color: #333;
-    transition: color 0.3s ease;
 }
 
-.vmo .vmo-flip-front:hover h3 {
+.card-back {
+    background: linear-gradient(45deg, #006400, #008000);
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+/* Icon Circle */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 215, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+.icon-circle i {
+    font-size: 2em;
     color: #006400;
 }
 
-.vmo .vmo-flip-back h4 {
-    font-size: 1.25rem;
+.vmo-card:hover .icon-circle {
+    background: #ffd700;
+    transform: rotate(360deg);
+}
+
+.vmo-card:hover .icon-circle i {
+    color: #fff;
+}
+
+/* Text Styles */
+.card-front h3,
+.card-back h4 {
+    font-family: 'Amiri', serif;
+    font-size: 1.8em;
     margin-bottom: 15px;
-    animation: fadeIn 1s ease;
 }
 
-.vmo p {
-    font-size: 0.95rem;
-    color: #555;
+.card-back h4 {
+    color: #ffd700;
+}
+
+.card-front p,
+.card-back p {
+    font-size: 1.1em;
+    text-align: center;
     line-height: 1.6;
-    transition: color 0.3s ease;
 }
 
-.vmo .vmo-flip-back p {
+.card-front p {
+    color: #555;
+}
+
+.card-back p {
     color: #f0f8eb;
 }
 
-/* Button Animation */
-.vmo .madrasa-btn {
+/* Button */
+.vmo-btn {
+    background: #ffd700;
+    color: #006400;
+    padding: 15px 40px;
     border-radius: 25px;
-    background: #006400;
-    border: 2px solid #006400;
-    color: #fff;
     font-weight: 600;
-    padding: 10px 30px;
-    transition: all 0.3s ease;
     text-transform: uppercase;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.vmo .madrasa-btn::after {
+.vmo-btn:hover {
+    background: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+}
+
+.vmo-btn::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    top: 0;
-    left: -100%;
-    transition: left 0.4s ease;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
 }
 
-.vmo .madrasa-btn:hover::after {
-    left: 100%;
+.vmo-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.6s ease-out;
 }
 
-.vmo .madrasa-btn:hover {
-    background: #008000;
-    border-color: #008000;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.4);
-}
+/* Animations */
+@keyframes float {
 
-/* Keyframe Animations */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes expand {
+
+    0%,
     100% {
-        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.2);
     }
 }
 
 /* Responsive Design */
-@media (min-width: 576px) {
-    .vmo .madrasa-heading {
-        font-size: 2.5rem;
-    }
-
-    .vmo .vmo-icon {
-        width: 70px;
-        height: 70px;
-        line-height: 70px;
-    }
-}
-
-@media (min-width: 768px) {
-    .vmo {
-        padding: 4rem 0;
-    }
-
-    .vmo .madrasa-heading {
-        font-size: 3rem;
-    }
-
-    .vmo h3 {
-        font-size: 1.75rem;
-    }
-}
-
-/* Mobile Adjustments */
 @media (max-width: 767px) {
-    .vmo .vmo-flip-card {
+    .vmo-card {
         height: auto;
-        /* Remove fixed height */
-        min-height: 0;
-        /* Let content dictate height */
-        margin-bottom: 2rem;
-        /* Increase spacing */
+        min-height: 300px;
     }
 
-    .vmo .vmo-flip-card:hover .vmo-flip-inner {
-        transform: rotateY(0deg);
-        /* Disable hover flip */
+    .vmo-card:hover .card-inner {
+        transform: rotateY(0);
     }
 
-    .vmo .vmo-flip-card.active .vmo-flip-inner {
-        transform: rotateY(180deg);
-        /* Flip on click */
-    }
-
-    .vmo .vmo-flip-front,
-    .vmo .vmo-flip-back {
+    .card-front,
+    .card-back {
         position: relative;
-        /* Fix overlap by removing absolute positioning */
-        height: auto;
-        /* Allow natural height */
     }
 
-    .vmo .vmo-flip-back {
+    .card-back {
         display: none;
-        /* Hide back by default */
     }
 
-    .vmo .vmo-flip-card.active .vmo-flip-front {
+    .vmo-card.active .card-front {
         display: none;
-        /* Hide front when active */
     }
 
-    .vmo .vmo-flip-card.active .vmo-flip-back {
-        display: block;
-        /* Show back when active */
+    .vmo-card.active .card-back {
+        display: flex;
     }
 }
 
 @media (max-width: 576px) {
-    .vmo {
-        padding: 2rem 0;
+    .vmo-title {
+        font-size: 2em;
     }
 
-    .vmo .madrasa-heading {
-        font-size: 1.75rem;
+    .card-front h3,
+    .card-back h4 {
+        font-size: 1.5em;
     }
 
-    .vmo h3 {
-        font-size: 1.25rem;
+    .card-front p,
+    .card-back p {
+        font-size: 1em;
     }
 
-    .vmo p {
-        font-size: 0.9rem;
+    .icon-circle {
+        width: 60px;
+        height: 60px;
     }
 
-    .vmo .madrasa-btn {
-        padding: 8px 20px;
+    .icon-circle i {
+        font-size: 1.5em;
     }
+}
+
+.vmo-card {
+    --x: 50%;
+    --y: 50%;
+}
+
+.card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255,215,0,0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.vmo-card:hover .card-front::before {
+    opacity: 1;
 }
 
 /*** Vision Mission Objectives End ***/
@@ -2103,7 +2126,7 @@ h6,
     font-size: 3.5em;
     font-family: 'Amiri', serif;
     font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header-decor {
@@ -2135,14 +2158,15 @@ h6,
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .card-front {
@@ -2170,7 +2194,7 @@ h6,
     bottom: 0;
     width: 100%;
     padding: 25px;
-    background: linear-gradient(to top, rgba(0,100,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 100, 0, 0.8), transparent);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2195,7 +2219,7 @@ h6,
     justify-content: center;
     font-weight: 600;
     font-size: 1.5em;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     animation: pulse 2s infinite;
 }
 
@@ -2237,7 +2261,8 @@ h6,
 }
 
 /* Buttons */
-.event-btn, .explore-btn {
+.event-btn,
+.explore-btn {
     background: #ffd700;
     color: #006400;
     padding: 12px 25px;
@@ -2247,7 +2272,8 @@ h6,
     transition: all 0.3s ease;
 }
 
-.event-btn:hover, .explore-btn:hover {
+.event-btn:hover,
+.explore-btn:hover {
     background: #fff;
     color: #006400;
     transform: scale(1.05);
@@ -2260,19 +2286,41 @@ h6,
 
 /* Animations */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes expand {
-    0%, 100% { transform: scaleX(1); }
-    50% { transform: scaleX(1.2); }
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(1.2);
+    }
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
+
 .event-card {
     --x: 50%;
     --y: 50%;
@@ -2285,7 +2333,7 @@ h6,
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at var(--x) var(--y), rgba(255,215,0,0.2), transparent 70%);
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255, 215, 0, 0.2), transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -2474,7 +2522,7 @@ h6,
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     border: 8px solid #ffd700;
     transition: transform 0.5s ease;
 }
@@ -2499,7 +2547,7 @@ h6,
     bottom: 0;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(to top, rgba(0,100,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 100, 0, 0.8), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -2537,7 +2585,7 @@ h6,
     font-size: 3.5em;
     font-family: 'Amiri', serif;
     font-weight: 700;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -2568,7 +2616,7 @@ h6,
 .signature-img {
     max-width: 200px;
     height: auto;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
     animation: sign 2s ease-in-out infinite alternate;
 }
 
@@ -2590,7 +2638,7 @@ h6,
     background: #fff;
     color: #006400;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,100,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
 }
 
 .message-btn::after {
@@ -2598,7 +2646,7 @@ h6,
     position: absolute;
     width: 150px;
     height: 150px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -2613,27 +2661,58 @@ h6,
 
 /* Animations */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 @keyframes sign {
-    0% { transform: translateX(-5px); }
-    100% { transform: translateX(5px); }
+    0% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(5px);
+    }
 }
 
 /* Responsive Design */
 @media (max-width: 991px) {
-    .message-title { font-size: 2.5em; }
-    .director-img-container { max-width: 350px; }
-    .message-text { font-size: 1.1em; }
+    .message-title {
+        font-size: 2.5em;
+    }
+
+    .director-img-container {
+        max-width: 350px;
+    }
+
+    .message-text {
+        font-size: 1.1em;
+    }
 }
 
 @media (max-width: 576px) {
-    .message-title { font-size: 2em; }
-    .director-img-container { max-width: 250px; }
-    .message-text { font-size: 1em; }
-    .message-btn { padding: 12px 25px; }
+    .message-title {
+        font-size: 2em;
+    }
+
+    .director-img-container {
+        max-width: 250px;
+    }
+
+    .message-text {
+        font-size: 1em;
+    }
+
+    .message-btn {
+        padding: 12px 25px;
+    }
 }
 
 .director-img-container {
@@ -2648,7 +2727,7 @@ h6,
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at var(--x) var(--y), rgba(255,215,0,0.2), transparent 70%);
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255, 215, 0, 0.2), transparent 70%);
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -2657,6 +2736,7 @@ h6,
 .director-img-container:hover .img-frame::before {
     opacity: 1;
 }
+
 /*** Director's Message End ***/
 
 /*** Team Start ***/
