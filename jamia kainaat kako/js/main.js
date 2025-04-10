@@ -42,7 +42,7 @@
 
 
     
-    const text = " Jamia Kainat";
+    const text = " Jamia Kainat Kako";
     let index = 0;
     const speed = 150; // Typing speed in milliseconds
 
